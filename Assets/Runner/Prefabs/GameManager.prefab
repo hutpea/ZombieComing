@@ -102,12 +102,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1916ea56aac9394ab604ecc7589a32e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ladderPrefab: {fileID: 2035463566866500072, guid: 88020638068c815459944d6350ef1cc8,
+  wallPrefab: {fileID: 7335332245736411108, guid: a172ad2a2360ab54b9665be09e4b02ee,
     type: 3}
   confettiPrefab: {fileID: 1620116211597326, guid: 1805b6a59d8bf1e4fabb266117b0e2cb,
     type: 3}
-  ladderOffset: {x: 0, y: 0, z: 8}
-  ladderTmpList: []
+  wallOffset: {x: 0, y: 21.76, z: 15.2692}
 --- !u!114 &8283208816826366898
 MonoBehaviour:
   m_ObjectHideFlags: 0

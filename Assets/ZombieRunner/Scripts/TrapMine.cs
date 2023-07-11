@@ -72,6 +72,7 @@ public class TrapMine : Spawnable
             
             Instantiate(explosionEffect, other.transform.position + offsetExplosePosition, Quaternion.identity);
             AudioManager.Instance.PlayEffect(SoundID.ExplosionSound1);
+            PlayerController.Instance.PlayDeathZomSound(SoundID.CrowdDie);
             Destroy(this.gameObject);
         }
     }

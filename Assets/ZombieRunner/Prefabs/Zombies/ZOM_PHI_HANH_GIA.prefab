@@ -1521,7 +1521,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 40db3173a05ae3242b1c182a09b0a183, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -1577,6 +1577,8 @@ MonoBehaviour:
   isFinishRun: 0
   currentHealth: 0
   animator: {fileID: 0}
+  zombieRigidbody: {fileID: 0}
+  wallIndex: 0
 --- !u!1 &6096482488256919776
 GameObject:
   m_ObjectHideFlags: 0

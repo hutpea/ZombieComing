@@ -24,12 +24,17 @@ public class Zombie : MonoBehaviour
 
     public Animator animator;
     
+    public Rigidbody zombieRigidbody;
+
+    public int wallIndex = 0;
+    
     private void Awake()
     {
         isDied = false;
         isFinishRun = false;
         currentHealth = GameData.ZombieMaxHealth;
         animator = GetComponent<Animator>();
+        zombieRigidbody = GetComponent<Rigidbody>();
 
         /*int randomNum = UnityEngine.Random.Range(0, 100);
         if (randomNum >= 50 && randomNum < 75)

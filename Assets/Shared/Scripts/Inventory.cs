@@ -106,7 +106,7 @@ namespace HyperCasual.Runner
             if (m_ManEventListener.m_Event is ItemPickedEvent manPickEvent)
             {
                 m_TempGold += GameData.ManGoldAmount;
-                Debug.Log("m_temp:"+m_TempGold);
+                //Debug.Log("m_temp:"+m_TempGold);
                 m_Hud.GoldValue = m_TempGold;
             }
             else
