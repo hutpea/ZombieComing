@@ -335,6 +335,10 @@ MonoBehaviour:
   - m_SoundID: 14
     m_AudioClip: {fileID: 8300000, guid: 357128a69075f9e4096b3f5b1f12d7b2, type: 3}
   - m_SoundID: 15
-    m_AudioClip: {fileID: 8300000, guid: 4bb205283ffb1194989ab3d068580698, type: 3}
+    m_AudioClip: {fileID: 8300000, guid: 22ce85e4b0883cb49a454f6a71ff3fa8, type: 3}
   - m_SoundID: 16
-    m_AudioClip: {fileID: 8300000, guid: 9fb3b1e7558230b4c8542cd38fc63c13, type: 3}
+    m_AudioClip: {fileID: 8300000, guid: 818fb7ceebef9a54fbc1a7a154710511, type: 3}
+  - m_SoundID: 17
+    m_AudioClip: {fileID: 8300000, guid: 6f2603dfdeb689341a683f1c22142a2d, type: 3}
+  - m_SoundID: 18
+    m_AudioClip: {fileID: 8300000, guid: 7b4c8374712c3be49838c216908f3f82, type: 3}

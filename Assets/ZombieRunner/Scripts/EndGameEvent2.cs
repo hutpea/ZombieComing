@@ -44,16 +44,15 @@ public class EndGameEvent2 : MonoBehaviour
         zombieList = new List<Zombie>();
         zombieList = currentZombieList;
 
-        int confettiCount = 3;
         float timePerJump = .2f;
         float delayTime = 0f;
         int zombieIndex = 0;
-        float height = 1f;
         foreach (var zombie in currentZombieList)
         {
             zombie.wallIndex = zombieIndex;
             zombieIndex++;
         }
+
         foreach (var zombie in currentZombieList)
         {
             bool isOverWall = false;
@@ -68,7 +67,7 @@ public class EndGameEvent2 : MonoBehaviour
 
             zombie.animator.SetFloat("Speed", 5f);
             zombie.animator.Play("Idle Walk Run Blend");
-            
+
             zombie.transform.DOLookAt(endGameWall.wallPoints[0].position, 0.5f);
 
             zombie.transform.DOMove(endGameWall.wallPoints[0].position, 1f).SetDelay(delayTime).OnComplete(delegate
@@ -76,40 +75,66 @@ public class EndGameEvent2 : MonoBehaviour
                 zombie.animator.SetFloat("Speed", 0f);
                 zombie.animator.Play("Climb");
                 zombie.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-                
-                zombie.transform.DOMove(endGameWall.wallPoints[zombie.wallIndex].position, timePerJump * height).OnComplete(delegate
+
+                if (isOverWall)
                 {
-                    zombie.animator.SetFloat("Speed", 0);
-                    zombie.animator.Play(null);
-                    if (isOverWall)
+                    zombie.transform.DOMove(endGameWall.topPoint.position, timePerJump * 25).OnComplete(delegate
                     {
-                        zombie.animator.SetFloat("Speed", 0f);
-                        zombie.animator.Play("Dance");
-                        zombie.transform.DOMove(endGameWall.topPoint.position, 0.25f).OnComplete(delegate
+                        zombie.animator.SetFloat("Speed", 5f);
+                        zombie.animator.Play("Idle Walk Run Blend");
+                        Vector3 targetPos = endGameWall.dancePoint.position + zombie.offsetPosToOriginal;
+                        zombie.transform.DOMove(targetPos, 1.5f).OnComplete(delegate
                         {
-                            Vector3 targetPos = endGameWall.dancePoint.position + zombie.offsetPosToOriginal;
-                            zombie.transform.DOMove(targetPos, 1.5f).OnComplete(delegate
+                            zombie.animator.SetFloat("Speed", 0f);
+                            zombie.animator.Play("Dance");
+                        });
+                    });
+                }
+                else
+                {
+                    zombie.transform.DOMove(endGameWall.wallPoints[zombie.wallIndex].position,
+                            timePerJump * zombie.wallIndex)
+                        .OnComplete(
+                            delegate
                             {
-                                if (confettiCount > 0)
+                                zombie.animator.SetFloat("Speed", 0);
+                                zombie.animator.Play("Dance");
+                                zombie.zombieRigidbody.isKinematic = true;
+                                zombie.zombieRigidbody.constraints = RigidbodyConstraints.FreezePosition;
+
+                                switch (zombie.wallIndex)
                                 {
-                                    confettiCount--;
-                                    Instantiate(confettiPrefab, targetPos, Quaternion.identity);
-                                    confettiPrefab.transform.localScale = new Vector3(4f, 4f, 4f);
+                                    case 4:
+                                    {
+                                        endGameWall.SetLight(1);
+                                        break;
+                                    }
+                                    case 9:
+                                    {
+                                        endGameWall.SetLight(2);
+                                        break;
+                                    }
+                                    case 14:
+                                    {
+                                        endGameWall.SetLight(3);
+                                        break;
+                                    }
+                                    case 20:
+                                    {
+                                        endGameWall.SetLight(4);
+                                        break;
+                                    }
+                                    case 29:
+                                    {
+                                        endGameWall.SetLight(5);
+                                        break;
+                                    }
+                                    default: break;
                                 }
                             });
-                        });
-                    }
-                    else
-                    {
-                        zombie.animator.SetFloat("Speed", 0);
-                        zombie.animator.Play("Dance");
-                        zombie.zombieRigidbody.isKinematic = true;
-                        zombie.zombieRigidbody.constraints = RigidbodyConstraints.FreezePosition;
-                    }
-                });
+                }
             });
 
-            height += 1;
             delayTime += 0.15f;
         }
 
@@ -138,7 +163,7 @@ public class EndGameEvent2 : MonoBehaviour
             PlayerController.Instance.transform.DOMoveZ(_tempPlayerPos.z, 1f);
         }*/
 
-        yield return new WaitForSeconds(delayTime + timePerJump * height - 0.25f);
+        yield return new WaitForSeconds(delayTime + timePerJump * Mathf.Min(zombieList.Count, 30) - 0.25f);
 
         if (currentZombieList.Count > 30)
         {
@@ -154,7 +179,7 @@ public class EndGameEvent2 : MonoBehaviour
         foreach (var zom in zombieList)
         {
             int randN = UnityEngine.Random.Range(0, 100);
-            if (randN > 40)
+            if (randN > 50)
             {
                 Instantiate(confettiPrefab, zom.transform.position + new Vector3(0, 0, -0.5f), Quaternion.identity);
                 confettiPrefab.transform.localScale = new Vector3(4f, 4f, 4f);
@@ -174,7 +199,14 @@ public class EndGameEvent2 : MonoBehaviour
         {
             if (zombieList.Count == 0) return;
             Vector3 _tempPlayerPos = PlayerController.Instance.transform.position;
-            _tempPlayerPos.y = zombieList[zombieList.Count - 1].transform.position.y + 5f;
+            if (zombieList.Count > 30)
+            {
+                _tempPlayerPos.y = zombieList[30].transform.position.y + 5f;
+            }
+            else
+            {
+                _tempPlayerPos.y = zombieList[zombieList.Count - 1].transform.position.y + 5f;
+            }
             PlayerController.Instance.transform.position = _tempPlayerPos;
             CameraManager.Instance.SetCameraPositionAndOrientation(false);
         }

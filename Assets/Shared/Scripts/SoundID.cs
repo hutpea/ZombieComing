@@ -22,6 +22,7 @@ namespace HyperCasual.Runner
         MaleDie,
         WomanDie,
         CrowdDie,
-        LoseSound
+        LoseSound,
+        ChimeBell
     }
 }

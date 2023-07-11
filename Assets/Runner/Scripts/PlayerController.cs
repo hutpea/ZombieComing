@@ -25,7 +25,7 @@ namespace HyperCasual.Runner
 
         [SerializeField] private List<GameObject> zombiePrefabs;
         public GameObject selectedZombiePrefab;
-        
+        public List<GameObject> runningManSeaPrefabs;
         [SerializeField] private ParticleSystem zombieIncreaseEffect;
         [SerializeField] private ParticleSystem zombieLostEffect;
         [SerializeField] private ParticleSystem zombieScratchEffect;
@@ -155,6 +155,16 @@ namespace HyperCasual.Runner
             if (levelIndex > 10 && levelIndex <= 20)
             {
                 Instantiate(GameManager.Instance.seaPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+                var allRunningManInScene = GameObject.FindObjectsByType<RunningMan>(FindObjectsSortMode.None);
+                for (int i = 0; i < allRunningManInScene.Length; i++)
+                {
+                    int rand = Random.Range(0, 100);
+                    if (rand > 50)
+                    {
+                        Instantiate(runningManSeaPrefabs[Random.Range(0, runningManSeaPrefabs.Count)], allRunningManInScene[i].transform.position, allRunningManInScene[i].transform.rotation);
+                        Destroy(allRunningManInScene[i].gameObject);
+                    }
+                }
             }
             else
             {
@@ -478,6 +488,8 @@ namespace HyperCasual.Runner
                 lastIndex = rememberIndex;
                 isRememberIndexEnable = false;
             }
+            
+            lastIndex = Mathf.Clamp(lastIndex, 0, spawnPointList.Count - 1);
 
             Vector3 position = spawnPointList[lastIndex].position;
             
