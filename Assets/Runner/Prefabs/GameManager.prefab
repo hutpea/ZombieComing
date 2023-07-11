@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8617234690931488546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5623413720124929502}
+  - component: {fileID: 4523162136152900322}
+  - component: {fileID: 3032845646059521394}
+  - component: {fileID: 4475261522849266085}
+  - component: {fileID: 8283208816826366898}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5623413720124929502
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8617234690931488546}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4523162136152900322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8617234690931488546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7d4f2e5e8e5b4e128b2f732f39a1f54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_WinEvent: {fileID: 11400000, guid: 4facc4ba26e884ef88b6c2506fa5ae2c, type: 2}
+  m_LoseEvent: {fileID: 11400000, guid: 2b6d3353ba4d84d3ca725ef1835ca96f, type: 2}
+  endGameEvent: {fileID: 3032845646059521394}
+  endGameEvent2: {fileID: 4475261522849266085}
+  endGameEventCastle: {fileID: 8283208816826366898}
+  gameMenuPrefab: {fileID: 8771416366208417624, guid: dc158619c566ea140b8c563a8ef87d04,
+    type: 3}
+  gameMainMenuUI: {fileID: 0}
+  runningManList:
+  - {fileID: 4612751367225042755, guid: 7aa6a21a94927c343bcf0a3868ff5ca9, type: 3}
+  - {fileID: 5390541237680523854, guid: c2f59d15eaca44642b203e138e71df4f, type: 3}
+  groundPrefab: {fileID: 4624326776115114326, guid: 997e716d4b6f25546ab3fe5e0e0edc80,
+    type: 3}
+  leftBuildingPrefabs:
+  - {fileID: 1498925090012481057, guid: d1ae889b6d8735440b9561c3e7afb02e, type: 3}
+  - {fileID: 4567645694326223252, guid: 0362e02c501bd684fbc0af44dec4328d, type: 3}
+  - {fileID: 6189619684410662850, guid: c571d134683bd3c48838a29ace252cb6, type: 3}
+  rightBuildingPrefabs:
+  - {fileID: 8553300253657201570, guid: 87d28fb2516587b4dbc42cd2d9259f6c, type: 3}
+  - {fileID: 3531843169514274682, guid: 768440285cee2df45a7bc291085e603a, type: 3}
+  - {fileID: 139891313773644970, guid: 5a3e0dda5fc1052439e2b6ceda347858, type: 3}
+  seaPrefab: {fileID: 5789809230665584777, guid: e095d59788bfc194da47bdfd8df9e395,
+    type: 3}
+  m_CurrentLevel: {fileID: 0}
+  endLineObject: {fileID: 0}
+--- !u!114 &3032845646059521394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8617234690931488546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b58fba22f044c44db265af8b3fdaf2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunManPrefab: {fileID: 1214046907099600600, guid: 25cf9c3deec771c4d9f079158107f109,
+    type: 3}
+  ladderPrefab: {fileID: 2035463566866500072, guid: 88020638068c815459944d6350ef1cc8,
+    type: 3}
+  gunManRowOffset: {x: 0, y: 0, z: 8}
+  ladderOffset: {x: 0, y: 0, z: 8}
+--- !u!114 &4475261522849266085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8617234690931488546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1916ea56aac9394ab604ecc7589a32e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ladderPrefab: {fileID: 2035463566866500072, guid: 88020638068c815459944d6350ef1cc8,
+    type: 3}
+  confettiPrefab: {fileID: 1620116211597326, guid: 1805b6a59d8bf1e4fabb266117b0e2cb,
+    type: 3}
+  ladderOffset: {x: 0, y: 0, z: 8}
+  ladderTmpList: []
+--- !u!114 &8283208816826366898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8617234690931488546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5c396881867e094ea59be42a3112a8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castlePrefabs:
+  - {fileID: 5986090214146745078, guid: f01d0e4d5709d994f8577a24c01d5402, type: 3}
+  - {fileID: 4620079971560770558, guid: d4b04730a4517204fa6d6d631cf8460b, type: 3}
+  - {fileID: 1052217076683137054, guid: 5f6b2e9ca61e3894f9beb5f6d449e5e8, type: 3}
+  - {fileID: 1401236854071725403, guid: 217d02ecd5ddb194d9306e72520b56c9, type: 3}
