@@ -10,7 +10,6 @@ namespace HyperCasual.Runner
         KeySound,
         ButtonSound,
         MenuMusic,
-        ZombieAdd,
         GunSound01,
         ExplosionSound1,
         ZombieScratch,

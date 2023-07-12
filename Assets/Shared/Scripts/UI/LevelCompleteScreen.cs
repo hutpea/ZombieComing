@@ -124,7 +124,6 @@ namespace HyperCasual.Runner
             m_GoldPanel.localScale = Vector3.zero;
             StartCoroutine(DelayGoldTitle());
             bonusWindowPanel.GetComponent<RectTransform>().localScale = Vector3.zero;
-            AudioManager.Instance.PlayEffect(SoundID.UITap);
         }
 
         void OnDisable()

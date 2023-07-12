@@ -724,6 +724,8 @@ namespace HyperCasual.Runner
         public void PlayDeathZomSound(SoundID soundID)
         {
             Debug.Log("zom death: " + soundID);
+            deathZomAudioSource.Stop();
+            deathZomAudioSource.clip = null;
             switch (soundID)
             {
                 case SoundID.MaleDie:
