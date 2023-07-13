@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.EnhancedTouch;
-using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 namespace HyperCasual.Runner
 {
@@ -18,6 +13,8 @@ namespace HyperCasual.Runner
         public static InputManager Instance => s_Instance;
         static InputManager s_Instance;
 
+        public Camera camera;
+        
         [SerializeField]
         float m_InputSensitivity = 1.5f;
 
@@ -38,12 +35,13 @@ namespace HyperCasual.Runner
 
         void OnEnable()
         {
-            EnhancedTouchSupport.Enable();
+            //EnhancedTouchSupport.Enable();
+            camera = Camera.main;
         }
 
         void OnDisable()
         {
-            EnhancedTouchSupport.Disable();
+            //EnhancedTouchSupport.Disable();
         }
 
         void Update()
@@ -54,9 +52,10 @@ namespace HyperCasual.Runner
             }
 
 #if UNITY_EDITOR
-            m_InputPosition = Mouse.current.position.ReadValue();
+            //m_InputPosition = camera.ScreenToWorldPoint(Input.mousePosition);
+            m_InputPosition = Input.mousePosition;
 
-            if (Mouse.current.leftButton.isPressed)
+            if (Input.GetMouseButtonDown(0))
             {
                 if (!m_HasInput)
                 {
@@ -69,9 +68,9 @@ namespace HyperCasual.Runner
                 m_HasInput = false;
             }
 #else
-            if (Touch.activeTouches.Count > 0)
+            if (Input.touchCount > 0)
             {
-                m_InputPosition = Touch.activeTouches[0].screenPosition;
+                m_InputPosition = Input.GetTouch(0).position;
 
                 if (!m_HasInput)
                 {

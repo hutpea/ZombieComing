@@ -81,7 +81,7 @@ public class Zombie : MonoBehaviour
             //Instantiate(zombieDamageEffect, this.transform.position, Quaternion.identity, this.transform);
         }
         AudioManager.Instance.PlayEffect(SoundID.ZombieDeath);
-        MMVibrationManager.Haptic(HapticTypes.RigidImpact);
+        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
     }
     
     public void RemoveThisZombie()

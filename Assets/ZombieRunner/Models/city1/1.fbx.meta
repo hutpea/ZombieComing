@@ -3,7 +3,17 @@ guid: 4531a88516beb51408fcd643f580ba67
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Multicolor.011
+    second: {fileID: 2100000, guid: 3646e2f778c95f142a0d9db04e2357a5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "Pubblicit\xE0_vetrine.010"
+    second: {fileID: 2100000, guid: edeaf5c535188c7468bf980d7630fcdf, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -724,27 +724,26 @@ namespace HyperCasual.Runner
         public void PlayDeathZomSound(SoundID soundID)
         {
             Debug.Log("zom death: " + soundID);
-            deathZomAudioSource.Stop();
-            deathZomAudioSource.clip = null;
+            AudioClip playClip = deathZomSoundList[0];
             switch (soundID)
             {
                 case SoundID.MaleDie:
                 {
-                    deathZomAudioSource.clip = deathZomSoundList[0];
+                    playClip = deathZomSoundList[0];
                     break;
                 }
                 case SoundID.WomanDie:
                 {
-                    deathZomAudioSource.clip = deathZomSoundList[1];
+                    playClip = deathZomSoundList[1];
                     break;
                 }
                 case SoundID.CrowdDie:
                 {
-                    deathZomAudioSource.clip = deathZomSoundList[2];
+                    playClip = deathZomSoundList[2];
                     break;
                 }
             }
-            deathZomAudioSource.Play();
+            deathZomAudioSource.PlayOneShot(playClip);
         }
 
         public void OnLose()
