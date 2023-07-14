@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class DailyRewardUI : MonoBehaviour
 {
     public GridLayoutGroup gridLayoutGroup;
+    public RectTransform lastDayRect;
     public List<Button> dailyRewardBtns;
     public List<Image> bgImages;
     public List<Image> iconImages;
@@ -27,9 +28,10 @@ public class DailyRewardUI : MonoBehaviour
     {
         float realDailyUIWidth = GetComponent<RectTransform>().rect.width;
         Debug.Log(realDailyUIWidth);
-        float cellWidth = realDailyUIWidth / 4f;
-        gridLayoutGroup.cellSize = new Vector2(cellWidth, cellWidth * 0.92f);
-        
+        float cellWidth = realDailyUIWidth / 5.25f;
+        gridLayoutGroup.cellSize = new Vector2(cellWidth, cellWidth);
+        Rect rect = lastDayRect.rect;
+        rect.width = cellWidth * 1.35f;
         for(int i = 0; i < dailyRewardBtns.Count; i++)
         {
             int index = i;

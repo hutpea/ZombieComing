@@ -5,21 +5,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="970e049a-e694-4575-a325-a7ac85250478" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ZombieComing/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ZombieComing/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Runner/Environment/Levels/Level_005.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Runner/Environment/Levels/Level_005.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Runner/Environment/Prefabs/RunnerVolume.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Runner/Environment/Prefabs/RunnerVolume.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Runner/Scenes/RunnerLevelEditor.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Runner/Scenes/RunnerLevelEditor.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Runner/Scripts/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Runner/Scripts/InputManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Runner/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Runner/Scripts/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Runner/Scripts/Zombie.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Runner/Scripts/Zombie.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shared/Prefabs/AudioManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shared/Prefabs/AudioManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shared/Prefabs/UI/LevelComplete.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shared/Prefabs/UI/LevelComplete.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shared/Prefabs/UI/PauseWindow.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shared/Prefabs/UI/PauseWindow.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shared/Prefabs/UI/SettingsMenu.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shared/Prefabs/UI/SettingsMenu.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/build_info.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/build_info.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Fonts/seguibl SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Fonts/seguibl SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Materials/Ground.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Materials/Ground.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Materials/LightOff.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Materials/LightOff.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Materials/LightOn.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Materials/LightOn.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Materials/RoadA_1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Materials/RoadA_1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Materials/RoadA_2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Materials/RoadA_2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Materials/SawMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Materials/SawMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Materials/ZombieDeathMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Materials/ZombieDeathMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Car/Material #29.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Car/Material #29.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Car/Material #30.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Car/Material #30.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Car/Material.002.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Car/Material.002.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Car/Material.004.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Car/Material.004.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Car/body.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Car/body.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Car/gadgets.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Car/gadgets.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Car/orange light.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Car/orange light.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Car/reflector.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Car/reflector.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Car/under.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Car/under.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Car/wheel.001.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Car/wheel.001.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Gun1/gun1mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Gun1/gun1mat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Gun3/gun3mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Gun3/gun3mat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Man/RunManBlueMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Man/RunManBlueMat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Stone Wall 001a.003.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/Stone Wall 001a.003.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/army/army doi mu mac do.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/army/army doi mu mac do.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/DoiMu/Material #23.001.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/DoiMu/Material #23.001.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/DoiMu/Material.013.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/DoiMu/Material.013.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/DoiMu/Material.014.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/DoiMu/Material.014.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/DoiMu/Material.015.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/DoiMu/Material.015.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/DoiMu/Material.016.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/DoiMu/Material.016.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/DoiMu/Material.022.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/DoiMu/Material.022.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/DoiMu/Material.051.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/DoiMu/Material.051.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/zombie/QuanTim/Material.051.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/zombie/QuanTim/Material.051.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/zombie/QuanTim/Material.052.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/zombie/QuanTim/Material.052.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/zombie/QuanTim/Material.053.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/zombie/QuanTim/Material.053.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/zombie/QuanTim/Material.054.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/zombie/QuanTim/Material.054.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/zombie/QuanTim/Material.055.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/zombie/QuanTim/Material.055.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/zombie/QuanTim/Material.056.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Models/zombie-20230608T051635Z-001/zombie/QuanTim/Material.056.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Prefabs/GAME_MENU.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Prefabs/GAME_MENU.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Scenes/TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Scenes/TestScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieRunner/Scripts/DailyRewardUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ZombieRunner/Scripts/DailyRewardUI.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,6 +140,7 @@
       <workItem from="1689094014108" duration="336000" />
       <workItem from="1689146761042" duration="4275000" />
       <workItem from="1689232669720" duration="585000" />
+      <workItem from="1689254262628" duration="1017000" />
     </task>
     <servers />
   </component>
