@@ -58,6 +58,7 @@ MonoBehaviour:
   - {fileID: 4612751367225042755, guid: 7aa6a21a94927c343bcf0a3868ff5ca9, type: 3}
   - {fileID: 5390541237680523854, guid: c2f59d15eaca44642b203e138e71df4f, type: 3}
   skyboxMaterial: {fileID: 2100000, guid: 123caa41e84e041d0bd65bb3ae888dd1, type: 2}
+  lightingSettings: {fileID: 4890085278179872738, guid: 61f345650b20b274c8c41b15b443a668, type: 2}
   groundPrefab: {fileID: 4624326776115114326, guid: 997e716d4b6f25546ab3fe5e0e0edc80, type: 3}
   leftBuildingPrefabs:
   - {fileID: 1498925090012481057, guid: d1ae889b6d8735440b9561c3e7afb02e, type: 3}
