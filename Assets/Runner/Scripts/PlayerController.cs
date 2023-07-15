@@ -721,29 +721,38 @@ namespace HyperCasual.Runner
             }
         }
 
+        private float m_LastSoundPlayTime = 0f;
+        const float m_MinSoundInterval = 0.075f;
+
         public void PlayDeathZomSound(SoundID soundID)
         {
-            Debug.Log("zom death: " + soundID);
-            AudioClip playClip = deathZomSoundList[0];
-            switch (soundID)
+            if (Time.time - m_LastSoundPlayTime >= m_MinSoundInterval)
             {
-                case SoundID.MaleDie:
+                Debug.Log("zom death: " + soundID);
+                AudioClip playClip = deathZomSoundList[0];
+                switch (soundID)
                 {
-                    playClip = deathZomSoundList[0];
-                    break;
+                    case SoundID.MaleDie:
+                    {
+                        playClip = deathZomSoundList[0];
+                        break;
+                    }
+                    case SoundID.WomanDie:
+                    {
+                        playClip = deathZomSoundList[1];
+                        break;
+                    }
+                    case SoundID.CrowdDie:
+                    {
+                        playClip = deathZomSoundList[2];
+                        break;
+                    }
                 }
-                case SoundID.WomanDie:
-                {
-                    playClip = deathZomSoundList[1];
-                    break;
-                }
-                case SoundID.CrowdDie:
-                {
-                    playClip = deathZomSoundList[2];
-                    break;
-                }
+                deathZomAudioSource.PlayOneShot(playClip);
+                
+                m_LastSoundPlayTime = Time.time;
             }
-            deathZomAudioSource.PlayOneShot(playClip);
+            
         }
 
         public void OnLose()
