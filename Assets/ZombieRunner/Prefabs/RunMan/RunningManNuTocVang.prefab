@@ -1096,7 +1096,7 @@ MonoBehaviour:
   isTouch: 0
   moveSpeed: 2
   direction: {x: 0, y: 0, z: 1}
-  deathSoundID: 15
+  deathSoundID: 14
 --- !u!1 &5899913734434087391
 GameObject:
   m_ObjectHideFlags: 0

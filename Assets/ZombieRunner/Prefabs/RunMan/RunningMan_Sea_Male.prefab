@@ -157,4 +157,4 @@ MonoBehaviour:
   isTouch: 0
   moveSpeed: 2
   direction: {x: 0, y: 0, z: 1}
-  deathSoundID: 14
+  deathSoundID: 13

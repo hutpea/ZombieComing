@@ -54,7 +54,7 @@ namespace HyperCasual.Runner
 #if UNITY_EDITOR
             //m_InputPosition = camera.ScreenToWorldPoint(Input.mousePosition);
             m_InputPosition = Input.mousePosition;
-            Debug.Log(m_InputPosition);
+            //Debug.Log(m_InputPosition);
 
             if (Input.GetMouseButton(0))
             {
