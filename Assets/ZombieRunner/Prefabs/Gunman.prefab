@@ -189,8 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f268cc360561b814987004d34581c61e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1581975966540601645, guid: 63f96bba99133de43a2b1ec1aa1078ef,
-    type: 3}
+  bulletPrefab: {fileID: 1581975966540601645, guid: 63f96bba99133de43a2b1ec1aa1078ef, type: 3}
   firePoint: {fileID: 2024439412461172286}
   isFire: 0
   fireRate: 1.25
@@ -973,7 +972,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 91454bf142e16bd41bb5c0baa23cb6e1, type: 3}
+  - {fileID: 2100000, guid: a6efea7d9e05c814fa64735143226255, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

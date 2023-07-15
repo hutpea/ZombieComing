@@ -3,7 +3,47 @@ guid: 949d710ed5b90394eb7cf52ace897d4f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #81.001
+    second: {fileID: 2100000, guid: 4ebe4ababf441514d8ad19067a927d30, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.071
+    second: {fileID: 2100000, guid: 5088eb10aa2cfec44800662b858da796, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.072
+    second: {fileID: 2100000, guid: a6f2492a86affe247b680204044c0614, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.073
+    second: {fileID: 2100000, guid: 4eb3a91bbef5bf348bb3273c1519fc66, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.074
+    second: {fileID: 2100000, guid: 740599218fd56ef42a3f9ebf94763ccb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.075
+    second: {fileID: 2100000, guid: 6dc5e36c614b7634b90bb795076f3be3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.078
+    second: {fileID: 2100000, guid: f65dab0a036870d4bb5bbe1f67bd6c14, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert3.003
+    second: {fileID: 2100000, guid: 1d63b8e884e12c349ac2486fcba8e7b7, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -395,8 +435,7 @@ ModelImporter:
     - name: mixamorig:Hips
       parentName: Armature.005
       position: {x: -0.00014511858, y: -0.022414843, z: 0.00013682155}
-      rotation: {x: -0.000000007334158, y: -0.000000024878318, z: 0.0000000027998748,
-        w: 1}
+      rotation: {x: -0.000000007334158, y: -0.000000024878318, z: 0.0000000027998748, w: 1}
       scale: {x: 0.99999994, y: 0.99999994, z: 1.0000001}
     - name: mixamorig:Spine
       parentName: mixamorig:Hips
@@ -406,8 +445,7 @@ ModelImporter:
     - name: mixamorig:Spine1
       parentName: mixamorig:Spine
       position: {x: 1.7881394e-10, y: 0.01661308, z: 0}
-      rotation: {x: 0.000000026077029, y: 0.000000053360854, z: 0.000000013304154,
-        w: 1}
+      rotation: {x: 0.000000026077029, y: 0.000000053360854, z: 0.000000013304154, w: 1}
       scale: {x: 1, y: 0.9999999, z: 0.99999994}
     - name: mixamorig:Spine2
       parentName: mixamorig:Spine1
@@ -467,8 +505,7 @@ ModelImporter:
     - name: mixamorig:LeftHandThumb4
       parentName: mixamorig:LeftHandThumb3
       position: {x: -0.0008914801, y: 0.0042929184, z: 0.000000011101366}
-      rotation: {x: -0.000000022351736, y: -0.000000030058473, z: 0.000000068173385,
-        w: 1}
+      rotation: {x: -0.000000022351736, y: -0.000000030058473, z: 0.000000068173385, w: 1}
       scale: {x: 1.0000006, y: 1.0000002, z: 1.0000002}
     - name: mixamorig:LeftHandIndex1
       parentName: mixamorig:LeftHand
@@ -533,8 +570,7 @@ ModelImporter:
     - name: mixamorig:RightHandThumb4
       parentName: mixamorig:RightHandThumb3
       position: {x: 0.0011609001, y: 0.0056145745, z: -0.000000002861023}
-      rotation: {x: -0.000000003725289, y: -0.00000005486023, z: -0.000000053743882,
-        w: 1}
+      rotation: {x: -0.000000003725289, y: -0.00000005486023, z: -0.000000053743882, w: 1}
       scale: {x: 0.9999997, y: 0.99999964, z: 0.9999999}
     - name: mixamorig:RightHandIndex1
       parentName: mixamorig:RightHand
@@ -554,8 +590,7 @@ ModelImporter:
     - name: mixamorig:RightHandIndex4
       parentName: mixamorig:RightHandIndex3
       position: {x: 0.000009661674, y: 0.0043407804, z: 0}
-      rotation: {x: 0.00000014901158, y: -0.00000005052982, z: -0.00000010995857,
-        w: 1}
+      rotation: {x: 0.00000014901158, y: -0.00000005052982, z: -0.00000010995857, w: 1}
       scale: {x: 1.0000004, y: 1.0000006, z: 1.0000002}
     - name: mixamorig:LeftUpLeg
       parentName: mixamorig:Hips
@@ -605,14 +640,12 @@ ModelImporter:
     - name: mixamorig:RightToe_End
       parentName: mixamorig:RightToeBase
       position: {x: -0.000000005245209, y: 0.010381287, z: -0.000000005722046}
-      rotation: {x: -0.0000014603138, y: 0.000000019092113, z: -0.00000010570511,
-        w: 1}
+      rotation: {x: -0.0000014603138, y: 0.000000019092113, z: -0.00000010570511, w: 1}
       scale: {x: 1.0000001, y: 1.0000001, z: 1.0000004}
     - name: police
       parentName: canh sat(Clone)
       position: {x: -0, y: 0.75164694, z: -2.48194e-10}
-      rotation: {x: -0.000000081462915, y: -0.000000043068212, z: 0.000000043727145,
-        w: 1}
+      rotation: {x: -0.000000081462915, y: -0.000000043068212, z: 0.000000043727145, w: 1}
       scale: {x: 0.05065676, y: 0.05065676, z: 0.05065676}
     armTwist: 0.5
     foreArmTwist: 0.5

@@ -61,8 +61,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8274133419916619345, guid: f90067ec923707c4984cfb9232188d8f, type: 3}
-  - {fileID: -3522955778539423533, guid: f90067ec923707c4984cfb9232188d8f, type: 3}
+  - {fileID: 2100000, guid: 4aa6c9ec0b74b9446afb9998e7e158c0, type: 2}
+  - {fileID: 2100000, guid: 94e3b5ccb3d8d704e8777d8cfe6014ec, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -125,14 +125,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6135964722473267716}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 516660eb0ac75ed4f93d21cb27c7587c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_SnapToGrid: 1
   meshRenderer: {fileID: 3490616082851593361}
-  matRed: {fileID: -3522955778539423533, guid: f90067ec923707c4984cfb9232188d8f, type: 3}
+  matRed: {fileID: 2100000, guid: c2d3cb6758113f844b45d88e6c94f93c, type: 2}
   matGreen: {fileID: 2100000, guid: e457eff08c9f40f43b019b1f3be99420, type: 2}
   lightSpeed: 0.4
   explosionEffect: {fileID: 19811046, guid: e6ea0c2b13012484ba2f5dc1054e6d75, type: 3}

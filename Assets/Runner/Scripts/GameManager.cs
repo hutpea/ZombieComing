@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using HyperCasual.Core;
 using HyperCasual.Gameplay;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -267,6 +268,8 @@ namespace HyperCasual.Runner
 
             Lightmapping.lightingSettings = lightingSettings;
             RenderSettings.skybox = skyboxMaterial;
+            RenderSettings.ambientSkyColor = Color.white;
+            RenderSettings.ambientMode = AmbientMode.Flat;
             RenderSettings.ambientSkyColor = Color.white;
             //Running Man
             /*var allMan = GameObject.FindGameObjectsWithTag("Man");
