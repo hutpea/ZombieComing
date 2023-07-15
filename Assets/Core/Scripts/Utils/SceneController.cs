@@ -79,8 +79,9 @@ namespace HyperCasual.Core
         
         void LoadNewSceneAdditive(string sceneName)
         {
-            var scene = SceneManager.GetSceneByName(sceneName);
-           // SceneManager.SetActiveScene(scene);
+            Debug.Log(sceneName);
+            var scene = SceneManager.CreateScene(sceneName);
+            SceneManager.SetActiveScene(scene);
             m_LastScene = scene;
         }
 

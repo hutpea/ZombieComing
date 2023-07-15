@@ -266,7 +266,7 @@ namespace HyperCasual.Runner
             UIManager.Instance.GetView<Hud>().Hide();
             PlayerController.Instance.DisablePlay();
 
-            Lightmapping.lightingSettings = lightingSettings;
+            //Lightmapping.lightingSettings = lightingSettings;
             RenderSettings.skybox = skyboxMaterial;
             RenderSettings.ambientSkyColor = Color.white;
             RenderSettings.ambientMode = AmbientMode.Flat;
