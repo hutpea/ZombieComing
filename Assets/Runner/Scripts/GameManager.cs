@@ -35,7 +35,7 @@ namespace HyperCasual.Runner
         [SerializeField] private GameObject gameMenuPrefab;
         public GameMainMenuUI gameMainMenuUI;
         [SerializeField] private List<GameObject> runningManList;
-        
+        public Material skyboxMaterial;
         public GameObject groundPrefab;
         public List<GameObject> leftBuildingPrefabs;
         public List<GameObject> rightBuildingPrefabs;
@@ -264,6 +264,8 @@ namespace HyperCasual.Runner
             UIManager.Instance.GetView<Hud>().Hide();
             PlayerController.Instance.DisablePlay();
             
+            RenderSettings.skybox = skyboxMaterial;
+            RenderSettings.ambientSkyColor = Color.white;
             //Running Man
             /*var allMan = GameObject.FindGameObjectsWithTag("Man");
             Debug.Log(allMan.Length);

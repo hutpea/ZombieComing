@@ -52,14 +52,13 @@ MonoBehaviour:
   endGameEvent: {fileID: 3032845646059521394}
   endGameEvent2: {fileID: 4475261522849266085}
   endGameEventCastle: {fileID: 8283208816826366898}
-  gameMenuPrefab: {fileID: 8771416366208417624, guid: dc158619c566ea140b8c563a8ef87d04,
-    type: 3}
+  gameMenuPrefab: {fileID: 8771416366208417624, guid: dc158619c566ea140b8c563a8ef87d04, type: 3}
   gameMainMenuUI: {fileID: 0}
   runningManList:
   - {fileID: 4612751367225042755, guid: 7aa6a21a94927c343bcf0a3868ff5ca9, type: 3}
   - {fileID: 5390541237680523854, guid: c2f59d15eaca44642b203e138e71df4f, type: 3}
-  groundPrefab: {fileID: 4624326776115114326, guid: 997e716d4b6f25546ab3fe5e0e0edc80,
-    type: 3}
+  skyboxMaterial: {fileID: 2100000, guid: 123caa41e84e041d0bd65bb3ae888dd1, type: 2}
+  groundPrefab: {fileID: 4624326776115114326, guid: 997e716d4b6f25546ab3fe5e0e0edc80, type: 3}
   leftBuildingPrefabs:
   - {fileID: 1498925090012481057, guid: d1ae889b6d8735440b9561c3e7afb02e, type: 3}
   - {fileID: 4567645694326223252, guid: 0362e02c501bd684fbc0af44dec4328d, type: 3}
@@ -68,8 +67,7 @@ MonoBehaviour:
   - {fileID: 8553300253657201570, guid: 87d28fb2516587b4dbc42cd2d9259f6c, type: 3}
   - {fileID: 3531843169514274682, guid: 768440285cee2df45a7bc291085e603a, type: 3}
   - {fileID: 139891313773644970, guid: 5a3e0dda5fc1052439e2b6ceda347858, type: 3}
-  seaPrefab: {fileID: 5789809230665584777, guid: e095d59788bfc194da47bdfd8df9e395,
-    type: 3}
+  seaPrefab: {fileID: 5789809230665584777, guid: e095d59788bfc194da47bdfd8df9e395, type: 3}
   m_CurrentLevel: {fileID: 0}
   endLineObject: {fileID: 0}
 --- !u!114 &3032845646059521394
@@ -84,10 +82,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b58fba22f044c44db265af8b3fdaf2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunManPrefab: {fileID: 1214046907099600600, guid: 25cf9c3deec771c4d9f079158107f109,
-    type: 3}
-  ladderPrefab: {fileID: 2035463566866500072, guid: 88020638068c815459944d6350ef1cc8,
-    type: 3}
+  gunManPrefab: {fileID: 1214046907099600600, guid: 25cf9c3deec771c4d9f079158107f109, type: 3}
+  ladderPrefab: {fileID: 2035463566866500072, guid: 88020638068c815459944d6350ef1cc8, type: 3}
   gunManRowOffset: {x: 0, y: 0, z: 8}
   ladderOffset: {x: 0, y: 0, z: 8}
 --- !u!114 &4475261522849266085
@@ -102,10 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1916ea56aac9394ab604ecc7589a32e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallPrefab: {fileID: 7335332245736411108, guid: a172ad2a2360ab54b9665be09e4b02ee,
-    type: 3}
-  confettiPrefab: {fileID: 1620116211597326, guid: 1805b6a59d8bf1e4fabb266117b0e2cb,
-    type: 3}
+  wallPrefab: {fileID: 7335332245736411108, guid: a172ad2a2360ab54b9665be09e4b02ee, type: 3}
+  confettiPrefab: {fileID: 1620116211597326, guid: 1805b6a59d8bf1e4fabb266117b0e2cb, type: 3}
   wallOffset: {x: 0, y: 21.76, z: 15.2692}
 --- !u!114 &8283208816826366898
 MonoBehaviour:
