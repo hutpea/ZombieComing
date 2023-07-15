@@ -40,7 +40,10 @@ namespace HyperCasual.Runner
             m_QuitButton.RemoveListener(OnQuitClicked);
             if (PlayerController.Instance.isInMenu)
             {
-                GameManager.Instance.gameMainMenuUI.gameObject.SetActive(true);
+                if (GameManager.Instance.gameMainMenuUI.gameObject != null)
+                {
+                    GameManager.Instance.gameMainMenuUI.gameObject.SetActive(true);
+                }
             }
             else
             {

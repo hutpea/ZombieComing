@@ -34,15 +34,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isTesting: 0
-  m_PrefabParent: {fileID: 314387739941697089, guid: be33d0e842eb84b2786dd46a6869b1ce,
-    type: 3}
+  m_PrefabParent: {fileID: 314387739941697089, guid: be33d0e842eb84b2786dd46a6869b1ce, type: 3}
   m_FuturePrefabInstances:
     m_Items:
-    - m_PrefabParent: {fileID: 314387739941697089, guid: be33d0e842eb84b2786dd46a6869b1ce,
-        type: 3}
+    - m_PrefabParent: {fileID: 314387739941697089, guid: be33d0e842eb84b2786dd46a6869b1ce, type: 3}
       m_FutureReference: {fileID: -9162366871219681373}
-    - m_PrefabParent: {fileID: 1021949262770465885, guid: be33d0e842eb84b2786dd46a6869b1ce,
-        type: 3}
+    - m_PrefabParent: {fileID: 1021949262770465885, guid: be33d0e842eb84b2786dd46a6869b1ce, type: 3}
       m_FutureReference: {fileID: -6151614384466002937}
 --- !u!114 &-6151614384466002937
 MonoBehaviour:
