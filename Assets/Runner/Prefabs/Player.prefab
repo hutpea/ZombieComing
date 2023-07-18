@@ -131,7 +131,7 @@ MonoBehaviour:
   m_CustomPlayerSpeed: 11
   m_AccelerationSpeed: 11
   m_DecelerationSpeed: 20
-  m_HorizontalSpeedFactor: 1
+  m_HorizontalSpeedFactor: 2
   m_ScaleVelocity: 2
   m_AutoMoveForward: 1
   isInMenu: 1

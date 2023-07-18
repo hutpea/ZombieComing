@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using HyperCasual.Core;
@@ -70,6 +71,8 @@ namespace HyperCasual.Runner
         /// </summary>
         public SpawnableObject[] Spawnables;
 
+        public LevelNumberSpawnableData LevelNumberSpawnableData;
+
         [System.Serializable]
         public class SpawnableObject
         {
@@ -128,6 +131,20 @@ namespace HyperCasual.Runner
             StartPrefab = updatedLevel.StartPrefab;
             EndPrefab = updatedLevel.EndPrefab;
             Spawnables = updatedLevel.Spawnables;
+            LevelNumberSpawnableData = updatedLevel.LevelNumberSpawnableData;
         }
+    }
+
+    [Serializable]
+    public class LevelNumberSpawnableData
+    {
+        public List<NumberSpawnableData> NumberSpawnableDataList;
+    }
+    
+    [Serializable]
+    public class NumberSpawnableData
+    {
+        public int number;
+        public NumberSign sign;
     }
 }

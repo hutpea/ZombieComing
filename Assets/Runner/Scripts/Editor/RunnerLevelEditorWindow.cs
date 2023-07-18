@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.SceneManagement;
 using UnityEditor.SceneManagement;
+using Object = UnityEngine.Object;
 
 namespace HyperCasual.Runner
 {
@@ -59,14 +61,15 @@ namespace HyperCasual.Runner
         [MenuItem("Window/Runner Level Editor")]
         static void Init()
         {
-            RunnerLevelEditorWindow window = (RunnerLevelEditorWindow)EditorWindow.GetWindow(typeof(RunnerLevelEditorWindow), false, "Level Editor");
+            RunnerLevelEditorWindow window =
+                (RunnerLevelEditorWindow)EditorWindow.GetWindow(typeof(RunnerLevelEditorWindow), false, "Level Editor");
             window.Show();
 
             // Load auto-save settings
             window.LoadAutoSaveSettings();
         }
 
-        void OnFocus() 
+        void OnFocus()
         {
             SceneView.duringSceneGui -= OnSceneGUI;
             SceneView.duringSceneGui += OnSceneGUI;
@@ -112,7 +115,8 @@ namespace HyperCasual.Runner
 
         void OnPlayModeChanged(PlayModeStateChange state)
         {
-            if ((state == PlayModeStateChange.EnteredEditMode || state == PlayModeStateChange.EnteredPlayMode) && m_SourceLevelDefinition != null)
+            if ((state == PlayModeStateChange.EnteredEditMode || state == PlayModeStateChange.EnteredPlayMode) &&
+                m_SourceLevelDefinition != null)
             {
                 Scene scene = EditorSceneManager.GetActiveScene();
                 if (scene.name.Equals(k_LevelEditorSceneName))
@@ -121,7 +125,8 @@ namespace HyperCasual.Runner
                     LoadLevel(m_SourceLevelDefinition);
                 }
             }
-            else if (state == PlayModeStateChange.ExitingEditMode && m_SourceLevelDefinition != null && !LevelNotLoaded())
+            else if (state == PlayModeStateChange.ExitingEditMode && m_SourceLevelDefinition != null &&
+                     !LevelNotLoaded())
             {
                 Scene scene = EditorSceneManager.GetActiveScene();
                 if (scene.name.Equals(k_LevelEditorSceneName))
@@ -174,7 +179,8 @@ namespace HyperCasual.Runner
                     }
                     else
                     {
-                        Debug.LogError($"Could not load level with path {levelPath}. Specify a valid level to continue.");
+                        Debug.LogError(
+                            $"Could not load level with path {levelPath}. Specify a valid level to continue.");
                         m_AttemptedToLoadPreviousLevel = true;
                     }
                 }
@@ -183,17 +189,23 @@ namespace HyperCasual.Runner
                     Debug.LogError($"Could not load level with path {levelPath}. Specify a valid level to continue.");
                     m_AttemptedToLoadPreviousLevel = true;
                 }
-                
+
                 return;
             }
 
             if (m_LoadedLevelDefinition.SnapToGrid)
             {
-                float nearestGridPositionToLevelWidth = m_LoadedLevelDefinition.LevelWidth + m_LoadedLevelDefinition.LevelWidth % m_LoadedLevelDefinition.GridSize;
-                float nearestGridPositionToLevelLength = m_LoadedLevelDefinition.LevelLength + m_LoadedLevelDefinition.LevelLength % m_LoadedLevelDefinition.GridSize;
+                float nearestGridPositionToLevelWidth = m_LoadedLevelDefinition.LevelWidth +
+                                                        m_LoadedLevelDefinition.LevelWidth %
+                                                        m_LoadedLevelDefinition.GridSize;
+                float nearestGridPositionToLevelLength = m_LoadedLevelDefinition.LevelLength +
+                                                         m_LoadedLevelDefinition.LevelLength %
+                                                         m_LoadedLevelDefinition.GridSize;
 
-                int numberOfGridLinesWide = (int)Mathf.Ceil(nearestGridPositionToLevelWidth / m_LoadedLevelDefinition.GridSize);
-                int numberOfGridLinesLong = (int)Mathf.Ceil(nearestGridPositionToLevelLength / m_LoadedLevelDefinition.GridSize);
+                int numberOfGridLinesWide =
+                    (int)Mathf.Ceil(nearestGridPositionToLevelWidth / m_LoadedLevelDefinition.GridSize);
+                int numberOfGridLinesLong =
+                    (int)Mathf.Ceil(nearestGridPositionToLevelLength / m_LoadedLevelDefinition.GridSize);
 
                 Handles.BeginGUI();
                 Handles.color = s_Blue;
@@ -224,9 +236,12 @@ namespace HyperCasual.Runner
                         Handles.DrawLine(new Vector3(xPosition, 0.0f, 0.0f), new Vector3(xPosition, 0.0f, gridLength));
                     }
                 }
+
                 Handles.EndGUI();
             }
         }
+
+        private bool _spawnableFoldout;
 
         void OnGUI()
         {
@@ -253,11 +268,13 @@ namespace HyperCasual.Runner
                         LoadLevel(m_SourceLevelDefinition);
                     }
                 }
+
                 return;
             }
 
-            m_SourceLevelDefinition = (LevelDefinition)EditorGUILayout.ObjectField("Level Definition", m_SourceLevelDefinition, typeof(LevelDefinition), false, null);
-                //Debug.Log("(1)" + m_SourceLevelDefinition);
+            m_SourceLevelDefinition = (LevelDefinition)EditorGUILayout.ObjectField("Level Definition",
+                m_SourceLevelDefinition, typeof(LevelDefinition), false, null);
+            //Debug.Log("(1)" + m_SourceLevelDefinition);
             if (m_SourceLevelDefinition == null)
             {
                 GUILayout.Label("Select a LevelDefinition ScriptableObject to begin.");
@@ -303,19 +320,33 @@ namespace HyperCasual.Runner
 
             // Auto-save
 
-            m_AutoSaveShowSettings = EditorGUILayout.BeginFoldoutHeaderGroup(m_AutoSaveShowSettings, "Auto-Save Settings");
+            m_AutoSaveShowSettings =
+                EditorGUILayout.BeginFoldoutHeaderGroup(m_AutoSaveShowSettings, "Auto-Save Settings");
 
             if (m_AutoSaveShowSettings)
             {
                 EditorGUI.BeginChangeCheck();
-                m_AutoSaveLevel = EditorGUILayout.Toggle(new GUIContent("Save Level on Play", "Any changes made to the level being edited will be automatically saved when entering play mode."), m_AutoSaveLevel);
-                m_AutoSavePlayer = EditorGUILayout.Toggle(new GUIContent("Save Player on Play", "Any changes made to the Player prefab will be automatically saved when entering play mode and reflected when playing the game via the Boot scene."), m_AutoSavePlayer);
-                m_AutoSaveCamera = EditorGUILayout.Toggle(new GUIContent("Save Camera on Play", "Any changes made to the GameplayCamera prefab will be automatically saved when entering play mode and reflected when playing the game via the Boot scene."), m_AutoSaveCamera);
+                m_AutoSaveLevel =
+                    EditorGUILayout.Toggle(
+                        new GUIContent("Save Level on Play",
+                            "Any changes made to the level being edited will be automatically saved when entering play mode."),
+                        m_AutoSaveLevel);
+                m_AutoSavePlayer = EditorGUILayout.Toggle(
+                    new GUIContent("Save Player on Play",
+                        "Any changes made to the Player prefab will be automatically saved when entering play mode and reflected when playing the game via the Boot scene."),
+                    m_AutoSavePlayer);
+                m_AutoSaveCamera = EditorGUILayout.Toggle(
+                    new GUIContent("Save Camera on Play",
+                        "Any changes made to the GameplayCamera prefab will be automatically saved when entering play mode and reflected when playing the game via the Boot scene."),
+                    m_AutoSaveCamera);
                 if (EditorGUI.EndChangeCheck())
                 {
                     SaveAutoSaveSettings();
                 }
             }
+
+            EditorGUILayout.EndFoldoutHeaderGroup();
+
             EditorGUILayout.Space();
 
             // Level Size Parameters
@@ -323,43 +354,127 @@ namespace HyperCasual.Runner
             GUILayout.Label("Terrain", EditorStyles.boldLabel);
 
             EditorGUI.BeginChangeCheck();
-            m_LoadedLevelDefinition.LevelIndex = Mathf.Max(0, EditorGUILayout.IntField("Level Index", m_LoadedLevelDefinition.LevelIndex));
-            m_LoadedLevelDefinition.LevelLength = Mathf.Max(0.0f, EditorGUILayout.FloatField("Length", m_LoadedLevelDefinition.LevelLength));
-            m_LoadedLevelDefinition.LevelWidth = Mathf.Max(0.0f, EditorGUILayout.FloatField("Width", m_LoadedLevelDefinition.LevelWidth));
-            m_LoadedLevelDefinition.LevelLengthBufferStart = Mathf.Max(0.0f, EditorGUILayout.FloatField("Start Buffer", m_LoadedLevelDefinition.LevelLengthBufferStart));
-            m_LoadedLevelDefinition.LevelLengthBufferEnd = Mathf.Max(0.0f, EditorGUILayout.FloatField("End Buffer", m_LoadedLevelDefinition.LevelLengthBufferEnd));
-            m_LoadedLevelDefinition.LevelThickness = Mathf.Max(EditorGUILayout.FloatField("Level Thickness", m_LoadedLevelDefinition.LevelThickness));
-            m_LoadedLevelDefinition.TerrainMaterial = (Material)EditorGUILayout.ObjectField("Terrain Material", m_LoadedLevelDefinition.TerrainMaterial, typeof(Material), false, null);
+            m_LoadedLevelDefinition.LevelIndex = Mathf.Max(0,
+                EditorGUILayout.IntField("Level Index", m_LoadedLevelDefinition.LevelIndex));
+            m_LoadedLevelDefinition.LevelLength = Mathf.Max(0.0f,
+                EditorGUILayout.FloatField("Length", m_LoadedLevelDefinition.LevelLength));
+            m_LoadedLevelDefinition.LevelWidth = Mathf.Max(0.0f,
+                EditorGUILayout.FloatField("Width", m_LoadedLevelDefinition.LevelWidth));
+            m_LoadedLevelDefinition.LevelLengthBufferStart = Mathf.Max(0.0f,
+                EditorGUILayout.FloatField("Start Buffer", m_LoadedLevelDefinition.LevelLengthBufferStart));
+            m_LoadedLevelDefinition.LevelLengthBufferEnd = Mathf.Max(0.0f,
+                EditorGUILayout.FloatField("End Buffer", m_LoadedLevelDefinition.LevelLengthBufferEnd));
+            m_LoadedLevelDefinition.LevelThickness =
+                Mathf.Max(EditorGUILayout.FloatField("Level Thickness", m_LoadedLevelDefinition.LevelThickness));
+            m_LoadedLevelDefinition.TerrainMaterial = (Material)EditorGUILayout.ObjectField("Terrain Material",
+                m_LoadedLevelDefinition.TerrainMaterial, typeof(Material), false, null);
             if (EditorGUI.EndChangeCheck() && m_TerrainGO != null && m_LevelParentGO != null)
             {
                 GameManager.CreateTerrain(m_LoadedLevelDefinition, ref m_TerrainGO);
                 m_TerrainGO.transform.SetParent(m_LevelParentGO.transform);
             }
+
             EditorGUILayout.Space();
 
             // Spawnable Snapping
 
             GUILayout.Label("Snapping Options", EditorStyles.boldLabel);
-            m_LoadedLevelDefinition.SnapToGrid = EditorGUILayout.Toggle("Snap to Grid", m_LoadedLevelDefinition.SnapToGrid);
+            m_LoadedLevelDefinition.SnapToGrid =
+                EditorGUILayout.Toggle("Snap to Grid", m_LoadedLevelDefinition.SnapToGrid);
             if (m_LoadedLevelDefinition.SnapToGrid)
             {
                 // Ensure the grid size is never too small, zero, or negative
-                m_LoadedLevelDefinition.GridSize = Mathf.Max(0.1f, EditorGUILayout.FloatField("Grid Size", m_LoadedLevelDefinition.GridSize));
+                m_LoadedLevelDefinition.GridSize = Mathf.Max(0.1f,
+                    EditorGUILayout.FloatField("Grid Size", m_LoadedLevelDefinition.GridSize));
             }
+
             EditorGUILayout.Space();
 
             // Necessary Prefabs
 
             GUILayout.Label("Prefabs", EditorStyles.boldLabel);
             EditorGUI.BeginChangeCheck();
-            m_LoadedLevelDefinition.StartPrefab = (GameObject)EditorGUILayout.ObjectField("Start Prefab", m_LoadedLevelDefinition.StartPrefab, typeof(GameObject), false, null);
-            m_LoadedLevelDefinition.EndPrefab = (GameObject)EditorGUILayout.ObjectField("End Prefab", m_LoadedLevelDefinition.EndPrefab, typeof(GameObject), false, null);
+            m_LoadedLevelDefinition.StartPrefab = (GameObject)EditorGUILayout.ObjectField("Start Prefab",
+                m_LoadedLevelDefinition.StartPrefab, typeof(GameObject), false, null);
+            m_LoadedLevelDefinition.EndPrefab = (GameObject)EditorGUILayout.ObjectField("End Prefab",
+                m_LoadedLevelDefinition.EndPrefab, typeof(GameObject), false, null);
             if (EditorGUI.EndChangeCheck())
             {
                 GameManager.PlaceLevelMarkers(m_LoadedLevelDefinition, ref m_LevelMarkersGO);
                 m_LevelMarkersGO.transform.SetParent(m_LevelParentGO.transform);
             }
+
             EditorGUILayout.Space();
+
+            //Create vertical group for spawnable data
+            _spawnableFoldout = EditorGUILayout.BeginFoldoutHeaderGroup(_spawnableFoldout, "Spawnable Data");
+            if (_spawnableFoldout)
+            {
+                GUILayout.Label(
+                    $"Spawnable Data |Count: {m_LoadedLevelDefinition.LevelNumberSpawnableData.NumberSpawnableDataList.Count}",
+                    EditorStyles.boldLabel);
+
+                EditorGUILayout.BeginVertical();
+                // Spawnable Data
+                //EditorGUI.BeginChangeCheck();
+                Action swap = null;
+                foreach (var nTmp in m_LoadedLevelDefinition.LevelNumberSpawnableData.NumberSpawnableDataList)
+                {
+                    EditorGUILayout.BeginHorizontal();
+                    EditorGUILayout.BeginVertical();
+                    nTmp.number = EditorGUILayout.IntField("Number", nTmp.number);
+                    nTmp.sign = (NumberSign)EditorGUILayout.EnumFlagsField("Sign", nTmp.sign);
+                    EditorGUILayout.EndVertical();
+
+                    EditorGUILayout.BeginVertical();
+
+                    var idx = m_LoadedLevelDefinition.LevelNumberSpawnableData.NumberSpawnableDataList.IndexOf(nTmp);
+
+                    if (idx > 0 && GUILayout.Button("To Upper"))
+                    {
+                        swap += () =>
+                            (m_LoadedLevelDefinition.LevelNumberSpawnableData.NumberSpawnableDataList[idx - 1],
+                                m_LoadedLevelDefinition.LevelNumberSpawnableData.NumberSpawnableDataList[idx]) = (
+                                m_LoadedLevelDefinition.LevelNumberSpawnableData.NumberSpawnableDataList[idx],
+                                m_LoadedLevelDefinition.LevelNumberSpawnableData.NumberSpawnableDataList[idx - 1]);
+                    }
+
+                    if (GUILayout.Button("Remove"))
+                    {
+                        m_LoadedLevelDefinition.LevelNumberSpawnableData.NumberSpawnableDataList.Remove(nTmp);
+                        break;
+                    }
+
+                    if (idx < m_LoadedLevelDefinition.LevelNumberSpawnableData.NumberSpawnableDataList.Count - 1 &&
+                        GUILayout.Button("To Lower"))
+                    {
+                        swap += () =>
+                            (m_LoadedLevelDefinition.LevelNumberSpawnableData.NumberSpawnableDataList[idx + 1],
+                                m_LoadedLevelDefinition.LevelNumberSpawnableData.NumberSpawnableDataList[idx]) = (
+                                m_LoadedLevelDefinition.LevelNumberSpawnableData.NumberSpawnableDataList[idx],
+                                m_LoadedLevelDefinition.LevelNumberSpawnableData.NumberSpawnableDataList[idx + 1]);
+                    }
+
+                    EditorGUILayout.EndVertical();
+
+                    EditorGUILayout.EndHorizontal();
+                    EditorGUILayout.Space();
+                }
+
+                if (GUILayout.Button("Add"))
+                {
+                    m_LoadedLevelDefinition.LevelNumberSpawnableData.NumberSpawnableDataList.Add(
+                        new NumberSpawnableData());
+                }
+
+                EditorGUILayout.EndVertical();
+                swap?.Invoke();
+            }
+
+            EditorGUILayout.EndFoldoutHeaderGroup();
+
+
+            //m_LoadedLevelDefinition.LevelNumberSpawnableData = (LevelNumberSpawnableData)EditorGUILayout.PropertyField("LevelNumberSpawnableData", m_LoadedLevelDefinition.LevelNumberSpawnableData, typeof(LevelNumberSpawnableData), false, null);
 
             // Spawnable Coloring
             if (Selection.gameObjects != null && Selection.gameObjects.Length > 0)
@@ -386,16 +501,20 @@ namespace HyperCasual.Runner
                         }
                     }
                 }
+
                 EditorGUILayout.Space();
             }
 
-            EditorGUILayout.HelpBox($"New objects added to the level require a {nameof(Spawnable)} type component added to the GameObject", MessageType.Info);
+            EditorGUILayout.HelpBox(
+                $"New objects added to the level require a {nameof(Spawnable)} type component added to the GameObject",
+                MessageType.Info);
         }
 
         bool LevelNotLoaded()
         {
             //return m_LoadedLevelDefinition == null || m_LevelParentGO == null || m_LoadedLevelGO == null || m_TerrainGO == null || m_LevelMarkersGO == null;
-            return m_LoadedLevelDefinition == null || m_LevelParentGO == null || m_LoadedLevelGO == null || m_LevelMarkersGO == null;
+            return m_LoadedLevelDefinition == null || m_LevelParentGO == null || m_LoadedLevelGO == null ||
+                   m_LevelMarkersGO == null;
         }
 
         void LoadLevel(LevelDefinition levelDefinition)
@@ -452,7 +571,8 @@ namespace HyperCasual.Runner
                     {
                         levelDefinition.Spawnables[i] = new LevelDefinition.SpawnableObject()
                         {
-                            SpawnablePrefab = PrefabUtility.GetCorrespondingObjectFromOriginalSource(spawnables[i].gameObject),
+                            SpawnablePrefab =
+                                PrefabUtility.GetCorrespondingObjectFromOriginalSource(spawnables[i].gameObject),
                             Position = spawnables[i].SavedPosition,
                             EulerAngles = spawnables[i].transform.eulerAngles,
                             Scale = spawnables[i].transform.lossyScale,
@@ -474,14 +594,16 @@ namespace HyperCasual.Runner
                 PlayerController[] players = (PlayerController[])Object.FindObjectsOfType(typeof(PlayerController));
                 if (players.Length == 1)
                 {
-                    GameObject playerPrefab = PrefabUtility.GetCorrespondingObjectFromOriginalSource(players[0].gameObject);
+                    GameObject playerPrefab =
+                        PrefabUtility.GetCorrespondingObjectFromOriginalSource(players[0].gameObject);
                     if (playerPrefab != null)
                     {
                         PrefabUtility.ApplyPrefabInstance(players[0].gameObject, InteractionMode.UserAction);
                     }
                     else
                     {
-                        Debug.LogError("PlayerController could not be found on a prefab instance. Changes could not be saved.");
+                        Debug.LogError(
+                            "PlayerController could not be found on a prefab instance. Changes could not be saved.");
                     }
                 }
                 else
@@ -490,9 +612,10 @@ namespace HyperCasual.Runner
                     {
                         Debug.LogWarning("No instance of PlayerController found in the scene. No changes saved!");
                     }
-                    else 
+                    else
                     {
-                        Debug.LogWarning("More than two instances of PlayerController found in the scene. No changes saved!");
+                        Debug.LogWarning(
+                            "More than two instances of PlayerController found in the scene. No changes saved!");
                     }
                 }
             }
@@ -502,14 +625,16 @@ namespace HyperCasual.Runner
                 CameraManager[] cameraManagers = (CameraManager[])Object.FindObjectsOfType(typeof(CameraManager));
                 if (cameraManagers.Length == 1)
                 {
-                    GameObject cameraManagerPrefab = PrefabUtility.GetCorrespondingObjectFromOriginalSource(cameraManagers[0].gameObject);
+                    GameObject cameraManagerPrefab =
+                        PrefabUtility.GetCorrespondingObjectFromOriginalSource(cameraManagers[0].gameObject);
                     if (cameraManagerPrefab != null)
                     {
                         PrefabUtility.ApplyPrefabInstance(cameraManagers[0].gameObject, InteractionMode.UserAction);
                     }
                     else
                     {
-                        Debug.LogError("CameraManager could not be found on a prefab instance. Changes could not be saved.");
+                        Debug.LogError(
+                            "CameraManager could not be found on a prefab instance. Changes could not be saved.");
                     }
                 }
                 else
@@ -518,9 +643,10 @@ namespace HyperCasual.Runner
                     {
                         Debug.LogWarning("No instance of CameraManager found in the scene. No changes saved!");
                     }
-                    else 
+                    else
                     {
-                        Debug.LogWarning("More than two instances of CameraManager found in the scene. No changes saved!");
+                        Debug.LogWarning(
+                            "More than two instances of CameraManager found in the scene. No changes saved!");
                     }
                 }
             }

@@ -10,6 +10,6 @@ public class TrapStaticSaw : Spawnable
     protected override void Update()
     {
         base.Update();
-        saw.Rotate(saw.transform.forward, 90f * Time.deltaTime);
+        saw.Rotate(saw.transform.forward, -90f * Time.deltaTime);
     }
 }

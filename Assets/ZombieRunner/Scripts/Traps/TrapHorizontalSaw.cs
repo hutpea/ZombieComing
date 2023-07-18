@@ -10,7 +10,7 @@ public class TrapHorizontalSaw : Spawnable
     public Transform saw;
 
     private bool isLeft;
-
+    
     private void Start()
     {
         if(transform.position.x <= 0)
@@ -26,7 +26,7 @@ public class TrapHorizontalSaw : Spawnable
     protected override void Update()
     {
         base.Update();
-        saw.Rotate(saw.transform.forward, 90f * Time.deltaTime);
+        saw.Rotate(-saw.forward * 100 * Time.deltaTime);
     }
 
     void FixedUpdate()

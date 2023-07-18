@@ -100,7 +100,7 @@ public class Zombie : MonoBehaviour
         float pushForce = 5f;
         Rigidbody newZomRb = newZom.GetComponent<Rigidbody>();
         newZomRb.AddForce(new Vector3(0, 1, -1) * pushForce);
-        AutoDestroyObj(newZom, 2f);
+        StartCoroutine(AutoDestroyObj(newZom, 2f));
         PlayerController.Instance.RemoveFromFormation(this, indexInSpawn);
     }
 
