@@ -59,13 +59,14 @@ public class TowerTrap : Spawnable
         }*/
         var bullet = Instantiate(gunAmmoPrefab, firePoint.position, Quaternion.identity);
         bullet.transform.LookAt(playerTransform);
-        Debug.Log(playerTransform.position);
+        /*Debug.Log(playerTransform.position);
         Vector3 bulletDirection = (playerTransform.position + new Vector3(0, 0, 1f)) - transform.position;
         Vector3 targetPos = playerTransform.position + new Vector3(0, 0, 2f);
         bulletDirection.Normalize();
         Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
         //bulletRb.AddForce(bulletDirection * 20f, ForceMode.Impulse);
-        bullet.transform.DOMove(targetPos, 1.5f);
+        bullet.transform.DOMove(targetPos, 1.5f);*/
+        bullet.GetComponent<GunAmmoFollowPlayer>().SetFollower(playerTransform);
         AudioManager.Instance.PlayEffect(SoundID.GunSound01);
     }
 }

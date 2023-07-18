@@ -89,6 +89,27 @@ namespace HyperCasual.Runner
             if (m_HasInput)
             {
                 float normalizedDeltaPosition = (m_InputPosition.x - m_PreviousInputPosition.x) / Screen.width * m_InputSensitivity;
+                /*if (normalizedDeltaPosition < minValue)
+                {
+                    minValue = normalizedDeltaPosition;
+                }
+                if (normalizedDeltaPosition > maxValue)
+                {
+                    maxValue = normalizedDeltaPosition;
+                }
+                Debug.Log("Min: " + minValue + " Max: " + maxValue);*/
+                if (normalizedDeltaPosition < 1f)
+                {
+                    PlayerController.Instance.m_HorizontalSpeedFactor = 1f;
+                }
+                else if (normalizedDeltaPosition >= 1f && normalizedDeltaPosition <= 3f)
+                {
+                    PlayerController.Instance.m_HorizontalSpeedFactor = 3.5f;
+                }
+                else if (normalizedDeltaPosition >= 3f)
+                {
+                    PlayerController.Instance.m_HorizontalSpeedFactor = 6f;
+                }
                 PlayerController.Instance.SetDeltaPosition(normalizedDeltaPosition);
             }
             else
@@ -98,6 +119,9 @@ namespace HyperCasual.Runner
 
             m_PreviousInputPosition = m_InputPosition;
         }
+        
+        private float minValue = 100f;
+        private float maxValue = -100f;
     }
 }
 

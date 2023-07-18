@@ -14,6 +14,7 @@ namespace HyperCasual.Runner
     /// </summary>
     public class LevelCompleteScreen : View
     {
+        public TextMeshProUGUI m_LevelText;
         [SerializeField]
         HyperCasualButton m_NextButton;
         [SerializeField]
@@ -124,6 +125,7 @@ namespace HyperCasual.Runner
             m_GoldPanel.localScale = Vector3.zero;
             StartCoroutine(DelayGoldTitle());
             bonusWindowPanel.GetComponent<RectTransform>().localScale = Vector3.zero;
+            m_LevelText.SetText("LEVEL " + GameManager.Instance.m_CurrentLevel.LevelIndex);
         }
 
         void OnDisable()
@@ -142,13 +144,13 @@ namespace HyperCasual.Runner
         void OnBonusButtonClicked()
         {
             bonusWindowPanel.GetComponent<RectTransform>().DOScale(1f, 0.5f).SetEase(Ease.InOutQuad);
-            int bonusValue = (int)(bonusPointer.GetMultiplierFromAngle() * (float)GoldValue - (float)GoldValue);
+            int bonusValue = (int)(bonusPointer.GetLevelMultiplier() * (float)GoldValue - (float)GoldValue);
             Debug.Log("Bonus: " + bonusValue);
             SaveManager.Currency += bonusValue;
             GameManager.Instance.gameMainMenuUI.currentGoldTxt.text = SaveManager.Currency.ToString();
             ToggleBonusButton(false);
             bonusWindowPanel.SetActive(true);
-            bonusWindowPanel_YouGotTxt.SetText("You got " + bonusPointer.GetMultiplierFromAngle().ToString("F1") + " bonuses!");
+            bonusWindowPanel_YouGotTxt.SetText("You got " + bonusPointer.GetLevelMultiplier().ToString("F1") + " bonuses!");
             bonusWindowPanel_ValueTxt.SetText(bonusValue.ToString());
             
             AudioManager.Instance.PlayEffect(SoundID.ScoreCollect);
@@ -176,6 +178,11 @@ namespace HyperCasual.Runner
                     m_Stars[i].gameObject.SetActive(i < count);
                 }
             }
+        }
+
+        private void Update()
+        {
+            m_GoldText.SetText(((int)(bonusPointer.GetLevelMultiplier() * (float)GoldValue)).ToString());
         }
     }
 }

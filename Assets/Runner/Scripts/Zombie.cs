@@ -100,7 +100,10 @@ public class Zombie : MonoBehaviour
         float pushForce = 5f;
         Rigidbody newZomRb = newZom.GetComponent<Rigidbody>();
         newZomRb.AddForce(new Vector3(0, 1, -1) * pushForce);
-        StartCoroutine(AutoDestroyObj(newZom, 2f));
+
+        newZom.AddComponent<AutoDestroy>();
+        newZom.GetComponent<AutoDestroy>().lifeTime = 2f;
+        
         PlayerController.Instance.RemoveFromFormation(this, indexInSpawn);
     }
 
@@ -163,11 +166,5 @@ public class Zombie : MonoBehaviour
         }
 
         skinnedMeshRenderer.materials = mats;
-    }
-
-    private IEnumerator AutoDestroyObj(GameObject objToDestroy, float duration)
-    {
-        yield return new WaitForSeconds(duration);
-        objToDestroy.SetActive(false);
     }
 }

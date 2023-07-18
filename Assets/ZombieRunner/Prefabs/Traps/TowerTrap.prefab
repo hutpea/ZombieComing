@@ -101,8 +101,8 @@ MonoBehaviour:
   m_SnapToGrid: 1
   animator: {fileID: 7638155117086258975}
   firePoint: {fileID: 8956748885112070597}
-  gunAmmoPrefab: {fileID: 905619138187889313, guid: b5bdc25185876cd4599cbe358eb08679, type: 3}
-  delayShot: 0.5
+  gunAmmoPrefab: {fileID: 6259253561088208576, guid: 25568ccd9a4a0b6438a11af2a6906c59, type: 3}
+  delayShot: 1.25
   minDistanceToActive: 40
   distanceToPlayer: 100
 --- !u!1 &5729556990530844783

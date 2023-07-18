@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class AutoDestroy : MonoBehaviour
 {
-    public float lifeTime;
+    public float lifeTime = 2f;
     private float timer = 0;
     private void Start()
     {

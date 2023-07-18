@@ -15,7 +15,6 @@ public class GunAmmoSingle : MonoBehaviour
             {
                 zombieComponent.Damage(damage);
             }
-            
             Destroy(gameObject);
         }
     }

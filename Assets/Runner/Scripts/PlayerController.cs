@@ -56,8 +56,7 @@ namespace HyperCasual.Runner
         [SerializeField]
         float m_DecelerationSpeed = 20.0f;
 
-        [SerializeField]
-        float m_HorizontalSpeedFactor = 0.5f;
+        public float m_HorizontalSpeedFactor = 0.5f;
 
         [SerializeField]
         float m_ScaleVelocity = 2.0f;
