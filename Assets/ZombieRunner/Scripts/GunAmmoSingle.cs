@@ -6,16 +6,22 @@ public class GunAmmoSingle : MonoBehaviour
 {
     public int damage;
 
+    private bool isActive = false;
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Zombie zombieComponent = other.GetComponent<Zombie>();
-            if (zombieComponent != null)
+            if (!isActive)
             {
-                zombieComponent.Damage(damage);
+                isActive = true;
+                Zombie zombieComponent = other.GetComponent<Zombie>();
+                if (zombieComponent != null)
+                {
+                    zombieComponent.Damage(damage);
+                }
+                Destroy(gameObject);
             }
-            Destroy(gameObject);
         }
     }
 }

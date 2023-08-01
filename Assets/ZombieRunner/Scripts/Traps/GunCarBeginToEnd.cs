@@ -74,11 +74,11 @@ public class GunCarBeginToEnd : Spawnable
 
             if (Mathf.Abs(distanceToPlayer) > 35)
             {
-                moveSpeed = 20f;
+                moveSpeed = 5f;
             }
             else if (Mathf.Abs(distanceToPlayer) < 15)
             {
-                moveSpeed = 8f;
+                moveSpeed = 20f;
             }
             else
             {
@@ -117,7 +117,8 @@ public class GunCarBeginToEnd : Spawnable
     private void Fire()
     {
         //AudioManager.Instance.PlayEffect();
-        var bullet = Instantiate(gunAmmoPrefab, firePoint.position, Quaternion.identity);
+        Quaternion bulletRot = Quaternion.Euler(0, 180, 0);
+        var bullet = Instantiate(gunAmmoPrefab, firePoint.position, bulletRot);
         Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
         bulletRb.AddForce(- direction * 20f, ForceMode.Impulse);
         AudioManager.Instance.PlayEffect(SoundID.GunSound01);

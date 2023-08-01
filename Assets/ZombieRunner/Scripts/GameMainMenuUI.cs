@@ -86,7 +86,7 @@ public class GameMainMenuUI : MonoBehaviour
             Debug.Log("buy zom");
             SaveManager.Currency -= GameData.StartZombieCost;
             GameData.StartZombieLevel += 1;
-            GameData.StartZombieCost += 10;
+            GameData.StartZombieCost += 150;
             GameData.StartZombie += 1;
             GameData.StartZombie = Mathf.Min(GameData.StartZombie, 50);
             currentStartZomTxt.text = "LEVEL " + GameData.StartZombieLevel.ToString();
@@ -106,7 +106,7 @@ public class GameMainMenuUI : MonoBehaviour
             Debug.Log("buy gold lv");
             SaveManager.Currency -= GameData.LevelCoinMultiplierCost;
             GameData.LevelCoinMultiplierLevel += 1;
-            GameData.LevelCoinMultiplierCost += 10;
+            GameData.LevelCoinMultiplierCost += 150;
             GameData.LevelCoinMultiplier += 0.1f;
             currentGoldLvTxt.text = "LEVEL " + GameData.LevelCoinMultiplierLevel.ToString();
             currentGoldLvValueTxt.text = GameData.LevelCoinMultiplier.ToString();
@@ -124,7 +124,7 @@ public class GameMainMenuUI : MonoBehaviour
             Debug.Log("buy health zom");
             SaveManager.Currency -= GameData.ZombieMaxHealthCost;
             GameData.ZombieMaxHealthLevel += 1;
-            GameData.ZombieMaxHealthCost += 10;
+            GameData.ZombieMaxHealthCost += 150;
             GameData.ZombieMaxHealth += 2;
             currentZombieHealthTxt.text = "LEVEL " + GameData.ZombieMaxHealthLevel.ToString();
             currentZombieHealthValueTxt.text = GameData.ZombieMaxHealth.ToString();

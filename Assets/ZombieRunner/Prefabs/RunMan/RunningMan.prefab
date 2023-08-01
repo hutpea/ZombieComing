@@ -646,7 +646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SnapToGrid: 1
   isTouch: 0
-  moveSpeed: 2
+  moveSpeed: 3
   direction: {x: 0, y: 0, z: 1}
   deathSoundID: 13
 --- !u!1 &4419772472005477263

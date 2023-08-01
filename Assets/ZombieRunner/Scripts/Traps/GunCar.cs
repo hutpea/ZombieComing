@@ -97,7 +97,8 @@ public class GunCar : Spawnable
     private void Fire()
     {
         //AudioManager.Instance.PlayEffect();
-        var bullet = Instantiate(gunAmmoPrefab, firePoint.position, Quaternion.identity);
+        Quaternion bulletRot = Quaternion.Euler(0, 180, 0);
+        var bullet = Instantiate(gunAmmoPrefab, firePoint.position, bulletRot);
         Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
         bulletRb.AddForce(- direction * 20f, ForceMode.Impulse);
         AudioManager.Instance.PlayEffect(SoundID.GunSound01);

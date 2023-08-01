@@ -27,9 +27,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4011530671068294517}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -9.5, y: 1.3360883, z: 31.14}
-  m_LocalScale: {x: 100, y: 100, z: 100}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -10, y: 0.8584, z: 30}
+  m_LocalScale: {x: 64.25, y: 64.25, z: 64.25}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4386507448899333477}
   m_Father: {fileID: 0}
@@ -102,7 +102,7 @@ MonoBehaviour:
   animator: {fileID: 7638155117086258975}
   firePoint: {fileID: 8956748885112070597}
   gunAmmoPrefab: {fileID: 6259253561088208576, guid: 25568ccd9a4a0b6438a11af2a6906c59, type: 3}
-  delayShot: 1.25
+  delayShot: 3
   minDistanceToActive: 40
   distanceToPlayer: 100
 --- !u!1 &5729556990530844783

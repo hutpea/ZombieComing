@@ -80,7 +80,14 @@ public class ShopSkinUI : MonoBehaviour
             equipBtn.gameObject.SetActive(false);
             buyBtn.gameObject.SetActive(true);
             watchAdBtn.gameObject.SetActive(true);
-            buyCostTxt.SetText(currentSelectSkinItemData.cost.ToString());
+            if (currentSelectSkinItemData.cost > 0)
+            {
+                buyCostTxt.SetText(currentSelectSkinItemData.cost.ToString());
+            }
+            else
+            {
+                buyCostTxt.SetText("Equip");
+            }
         }
     }
 
@@ -137,8 +144,9 @@ public class ShopSkinUI : MonoBehaviour
     [Button]
     public void CreateItem()
     {
+        //PlayerPrefs.DeleteAll();
         List<SkinItemData> skinItemDatas = new List<SkinItemData>();
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 8; i++)
         {
             SkinItemData skinItemData = new SkinItemData();
             string name = "Purple Pant Zom";
@@ -163,6 +171,30 @@ public class ShopSkinUI : MonoBehaviour
                     cost = 300;
                     break;
                 }
+                case 4:
+                {
+                    name = "Army Zom";
+                    cost = 500;
+                    break;
+                }
+                case 5:
+                {
+                    name = "Batman Zom";
+                    cost = 700;
+                    break;
+                }
+                case 6:
+                {
+                    name = "Ninja Zom";
+                    cost = 1000;
+                    break;
+                }
+                case 7:
+                {
+                    name = "Superman Zom";
+                    cost = 2000;
+                    break;
+                }
             }
 
             skinItemData.name = name;
@@ -174,7 +206,6 @@ public class ShopSkinUI : MonoBehaviour
 
         GameSkinsData gameSkinsData = new GameSkinsData();
         gameSkinsData.skinItemDatas = skinItemDatas;
-
         GameData.GameSkinData = new GameSkinsData();
         GameData.GameSkinData = gameSkinsData;
     }

@@ -317,7 +317,7 @@ MonoBehaviour:
   - m_SoundID: 6
     m_AudioClip: {fileID: 8300000, guid: ecc2ff507d6925c48b25f7e769d32a14, type: 3}
   - m_SoundID: 7
-    m_AudioClip: {fileID: 8300000, guid: 3cef45eff8d2dfe4f99ed83f7faa2df5, type: 3}
+    m_AudioClip: {fileID: 8300000, guid: 1498677773af8054f8fed2e7f3e516b1, type: 3}
   - m_SoundID: 8
     m_AudioClip: {fileID: 8300000, guid: 1e5d5553c3542ba4cb3351bc8004357d, type: 3}
   - m_SoundID: 9

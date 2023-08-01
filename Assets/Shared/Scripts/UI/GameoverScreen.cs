@@ -20,26 +20,34 @@ namespace HyperCasual.Runner
         [SerializeField]
         AbstractGameEvent m_GoToMainMenuEvent;
 
+        public AudioSource audioSource;
+        
         void OnEnable()
         {
             m_PlayAgainButton.AddListener(OnPlayAgainButtonClick);
             m_GoToMainMenuButton.AddListener(OnGoToMainMenuButtonClick);
+            audioSource.Play();
         }
 
         void OnDisable()
         {
             m_PlayAgainButton.RemoveListener(OnPlayAgainButtonClick);
             m_GoToMainMenuButton.RemoveListener(OnGoToMainMenuButtonClick);
+            audioSource.Stop();
         }
 
         void OnPlayAgainButtonClick()
         {
+            SaveManager.Currency += Inventory.Instance.GetTempGold();
+            Debug.Log(Inventory.Instance.GetTempGold());
             Hide();
             m_PlayAgainEvent.Raise();
         }
 
         void OnGoToMainMenuButtonClick()
         {
+            SaveManager.Currency += Inventory.Instance.GetTempGold();
+
             Hide();
             m_GoToMainMenuEvent.Raise();
         }

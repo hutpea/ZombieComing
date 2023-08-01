@@ -13,6 +13,7 @@ public class EndGameWall : MonoBehaviour
     public List<MeshRenderer> rightMatLights;
     public Material lightOffMaterial;
     public Material lightOnMaterial;
+    public GameObject wallPlusObj;
 
     public int wallLevel;
 

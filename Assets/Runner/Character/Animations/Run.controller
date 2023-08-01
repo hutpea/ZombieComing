@@ -214,7 +214,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: dle Walk Run Blend 1
+  m_Name: Idle Walk Run Blend 1
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -679,10 +679,10 @@ BlendTree:
     m_DirectBlendParameter: Speed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 1596898096714789520, guid: 85c6a642d72e4aa41ae77459f9c693fc, type: 3}
+    m_Motion: {fileID: 1696838996916218230, guid: 79c6e89002355a9438bc4f22b4027e56, type: 3}
     m_Threshold: 6
     m_Position: {x: 0, y: 0}
-    m_TimeScale: 2
+    m_TimeScale: 1.5
     m_CycleOffset: 0
     m_DirectBlendParameter: Speed
     m_Mirror: 0

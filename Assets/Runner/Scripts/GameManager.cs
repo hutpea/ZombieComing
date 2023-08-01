@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using HyperCasual.Core;
 using HyperCasual.Gameplay;
 using UnityEngine;
@@ -42,6 +43,7 @@ namespace HyperCasual.Runner
         public List<GameObject> leftBuildingPrefabs;
         public List<GameObject> rightBuildingPrefabs;
         public GameObject seaPrefab;
+        public GameObject egyptPrefab;
 
         public LevelDefinition m_CurrentLevel;
 
@@ -219,6 +221,23 @@ namespace HyperCasual.Runner
                     go.transform.SetParent(levelParent);
                 }
             }
+            var allNumberSpawn = FindObjectsByType<NumberSpawnable>(FindObjectsSortMode.None);
+            if (allNumberSpawn.Length > 0)
+            {
+                var numberSpawnList = allNumberSpawn.OrderBy(x => x.transform.position.z).ToList();
+                LevelNumberSpawnableData spawnableNumberData = new LevelNumberSpawnableData();
+                if (GameManager.Instance != null)
+                {
+                    if (GameManager.Instance.m_CurrentLevel != null)
+                    {
+                        spawnableNumberData = GameManager.Instance.m_CurrentLevel.LevelNumberSpawnableData;
+                    }
+                }
+                for (int i = 0; i < numberSpawnList.Count; i++)
+                {
+                    numberSpawnList[i].SetNumber(spawnableNumberData.NumberSpawnableDataList[i].number, spawnableNumberData.NumberSpawnableDataList[i].sign);
+                }
+            }
             //Debug.Log("LoadLevel Complete!");
         }
 
@@ -244,6 +263,11 @@ namespace HyperCasual.Runner
 
         void StartGame()
         {
+            if (GameData.GameFirstLaunch == 0)
+            {
+                GameData.GameFirstLaunch = 1;
+                CreateSkinItemData();
+            }
             isInCastleMode = false;
             gameMainMenuUI = Instantiate(gameMenuPrefab).GetComponentInChildren<GameMainMenuUI>();
             GameData.LevelLadderLevel = 1;
@@ -421,6 +445,74 @@ namespace HyperCasual.Runner
             endGameEventCastle.StartGame();
             
             gameMainMenuUI.StartPlayBtn();
+        }
+        
+        private void CreateSkinItemData()
+        {
+            //PlayerPrefs.DeleteAll();
+            List<SkinItemData> skinItemDatas = new List<SkinItemData>();
+            for (int i = 0; i < 8; i++)
+            {
+                SkinItemData skinItemData = new SkinItemData();
+                string name = "Purple Pant Zom";
+                int cost = 0;
+                switch (i)
+                {
+                    case 1:
+                    {
+                        name = "Red Hat Zom";
+                        cost = 100;
+                        break;
+                    }
+                    case 2:
+                    {
+                        name = "Astronaut Zom";
+                        cost = 200;
+                        break;
+                    }
+                    case 3:
+                    {
+                        name = "Skeleton Zom";
+                        cost = 300;
+                        break;
+                    }
+                    case 4:
+                    {
+                        name = "Army Zom";
+                        cost = 500;
+                        break;
+                    }
+                    case 5:
+                    {
+                        name = "Batman Zom";
+                        cost = 700;
+                        break;
+                    }
+                    case 6:
+                    {
+                        name = "Ninja Zom";
+                        cost = 1000;
+                        break;
+                    }
+                    case 7:
+                    {
+                        name = "Superman Zom";
+                        cost = 2000;
+                        break;
+                    }
+                }
+
+                skinItemData.name = name;
+                skinItemData.index = i;
+                skinItemData.cost = cost;
+                skinItemData.owned = false;
+                skinItemDatas.Add(skinItemData);
+            }
+
+            GameSkinsData gameSkinsData = new GameSkinsData();
+            gameSkinsData.skinItemDatas = skinItemDatas;
+            GameData.GameSkinData = new GameSkinsData();
+            GameData.GameSkinData = gameSkinsData;
         }
     }
 }

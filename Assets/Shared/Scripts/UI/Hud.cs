@@ -16,6 +16,7 @@ namespace HyperCasual.Gameplay
     {
         [SerializeField]
         TextMeshProUGUI m_GoldText;
+        public Transform m_GoldIconTransform;
         [SerializeField]
         Slider m_XpSlider;
         [SerializeField]
@@ -42,7 +43,8 @@ namespace HyperCasual.Gameplay
                 if (m_GoldValue != value)
                 {
                     m_GoldValue = value;
-                    m_GoldText.text = GoldValue.ToString();
+                    //m_GoldText.text = GoldValue.ToString();
+                    m_GoldText.text = SaveManager.Currency.ToString();
                 }
             }
         }
@@ -68,6 +70,7 @@ namespace HyperCasual.Gameplay
 
         void OnEnable()
         {
+            m_GoldText.text = SaveManager.Currency.ToString();
             m_PauseButton.AddListener(OnPauseButtonClick);
             m_PauseButton.gameObject.SetActive(true);
         }

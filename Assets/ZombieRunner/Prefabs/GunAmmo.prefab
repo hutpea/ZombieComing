@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -5137047900845731583}
   - component: {fileID: 1162515439899292748}
   - component: {fileID: 2451115720789195449}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GunAmmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1581975967291854369}
   - component: {fileID: 1581975967291854368}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -23,13 +23,15 @@ public class TextureUtility : MonoBehaviour
 
     private static void CreateImageFiles(Texture2D tex, int index)
     {
+        Debug.Log("CreateImageFiles");
         var arrayData = tex.EncodeToPNG();
         if (arrayData .Length < 1)
         {
             return;
         }
-        var path = @"D:\Code\CoreRunner3D\Assets\ZombieRunner\Materials\" + index + ".png";
+        var path = @"D:\Code\ZombieComing\Assets\ZombieRunner\Materials\" + index + ".png";
         File.WriteAllBytes(path, arrayData );
+        Debug.Log("Finish");
         //AssetDatabase.Refresh();
     }
 

@@ -47,10 +47,11 @@ public class CastleUI : MonoBehaviour
             {
                OnClaimCastleGold(0);
             });
+            claimCastleButtons[0].interactable = true;
          }
          else
          {
-            claimCastleButtons[0].gameObject.SetActive(false);
+            SetCastleClaimed(0);
          }
       }
       else
@@ -65,14 +66,15 @@ public class CastleUI : MonoBehaviour
             currentCastle1Gold = (int)Mathf.Min((int)timeSpanCastle2.TotalHours, 24) * castle1MaxHourGold;
             claimCastleButtons[1].gameObject.SetActive(true);
             castleCoinTexts[1].SetText(currentCastle2Gold.ToString());
-            claimCastleButtons[0].onClick.AddListener(delegate
+            claimCastleButtons[1].onClick.AddListener(delegate
             {
                OnClaimCastleGold(1);
             });
+            claimCastleButtons[1].interactable = true;
          }
          else
          {
-            claimCastleButtons[1].gameObject.SetActive(false);
+            SetCastleClaimed(1);
          }
       }
       else
@@ -87,14 +89,15 @@ public class CastleUI : MonoBehaviour
             currentCastle1Gold = (int)Mathf.Min((int)timeSpanCastle3.TotalHours, 24) * castle1MaxHourGold;
             claimCastleButtons[2].gameObject.SetActive(true);
             castleCoinTexts[2].SetText(currentCastle3Gold.ToString());
-            claimCastleButtons[0].onClick.AddListener(delegate
+            claimCastleButtons[2].onClick.AddListener(delegate
             {
                OnClaimCastleGold(2);
             });
+            claimCastleButtons[2].interactable = true;
          }
          else
          {
-            claimCastleButtons[2].gameObject.SetActive(false);
+            SetCastleClaimed(2);
          }
       }
       else
@@ -109,14 +112,15 @@ public class CastleUI : MonoBehaviour
             currentCastle1Gold = (int)Mathf.Min((int)timeSpanCastle4.TotalHours, 24) * castle1MaxHourGold;
             claimCastleButtons[3].gameObject.SetActive(true);
             castleCoinTexts[3].SetText(currentCastle4Gold.ToString());
-            claimCastleButtons[0].onClick.AddListener(delegate
+            claimCastleButtons[3].onClick.AddListener(delegate
             {
                OnClaimCastleGold(3);
             });
+            claimCastleButtons[3].interactable = true;
          }
          else
          {
-            claimCastleButtons[3].gameObject.SetActive(false);
+            SetCastleClaimed(3);
          }
       }
       else
@@ -164,12 +168,18 @@ public class CastleUI : MonoBehaviour
       }
 
       GameManager.Instance.gameMainMenuUI.currentGoldTxt.text = SaveManager.Currency.ToString();
-      
-      claimCastleButtons[index].gameObject.SetActive(false);
+
+      SetCastleClaimed(index);
    }
 
    private void OnCombatBtnClicked()
    {
       GameManager.Instance.StartCastleMode();
+   }
+
+   private void SetCastleClaimed(int index)
+   {
+      castleCoinTexts[index].SetText("Claimed");
+      claimCastleButtons[index].interactable = false;
    }
 }

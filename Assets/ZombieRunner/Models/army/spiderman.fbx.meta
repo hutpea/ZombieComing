@@ -3,7 +3,27 @@ guid: 68b0476dce4b0a84b9bb2a95fa2543df
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.043
+    second: {fileID: 2100000, guid: 84638cd72898a0040a0b26e0ebd21285, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Spider_man_maskMaterial.002
+    second: {fileID: 2100000, guid: 7b366f489b157c04d83d13d06ee4867d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Spider_man_shirtMaterial.002
+    second: {fileID: 2100000, guid: 5ff7b79def42b5e4c87757c6f7ebb4d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert10.003
+    second: {fileID: 2100000, guid: f3f5543c99dd5b940a10adc6f9ce86ce, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

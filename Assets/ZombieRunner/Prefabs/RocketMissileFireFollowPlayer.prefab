@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6259253561088380966}
   - component: {fileID: 6259253561074141516}
   - component: {fileID: 6259253561074644324}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FireSpikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4763,7 +4763,7 @@ GameObject:
   - component: {fileID: 6259253561088307550}
   - component: {fileID: 6259253561074237838}
   - component: {fileID: 6259253561074641080}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SmokeTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4939,7 +4939,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 0.47821668, b: 0.3443396, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9506,7 +9506,7 @@ GameObject:
   - component: {fileID: 6259253561088398748}
   - component: {fileID: 6259253561074225420}
   - component: {fileID: 6259253561074613444}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WhiteGlobe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9682,7 +9682,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.8113208, g: 0.30332538, b: 0.17986828, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -14249,7 +14249,7 @@ GameObject:
   - component: {fileID: 6259253561088287736}
   - component: {fileID: 6259253561074134310}
   - component: {fileID: 6259253561074598366}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SparkTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19041,7 +19041,7 @@ GameObject:
   - component: {fileID: 6259253561088289888}
   - component: {fileID: 6259253561088289919}
   - component: {fileID: -7041134980680967547}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RocketMissileFireFollowPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

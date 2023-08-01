@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace HyperCasual.Runner
 {
@@ -300,14 +301,18 @@ namespace HyperCasual.Runner
             float roadWidth = width / 6.4f;
             float roadLength = roadLengthFactor;
             //Debug.Log(roadWidth);
-            GameObject roadParent = new GameObject("RoadParent");
-            for (int i = 0; i < numberOfRoadInstance; i++)
+            if (GameObject.FindGameObjectWithTag("RoadParent") == null)
             {
-                var terrainRoadObj = Instantiate(terrainRoadPrefab, new Vector3(0, 0, i * (roadLengthFactor / 2f)), Quaternion.Euler(-90f, 0, 0), roadParent.transform);
-                var tempScale = new Vector3(1, 1, 1);
-                tempScale.x = roadWidth;
-                tempScale.y = roadLength;
-                terrainRoadObj.transform.localScale = tempScale;
+                GameObject roadParent = new GameObject("RoadParent");
+                roadParent.tag = "RoadParent";
+                for (int i = 0; i < numberOfRoadInstance; i++)
+                {
+                    var terrainRoadObj = Instantiate(terrainRoadPrefab, new Vector3(0, 0, i * (roadLengthFactor / 2f)), Quaternion.Euler(-90f, 0, 0), roadParent.transform);
+                    var tempScale = new Vector3(1, 1, 1);
+                    tempScale.x = roadWidth;
+                    tempScale.y = roadLength;
+                    terrainRoadObj.transform.localScale = tempScale;
+                }
             }
         }
     }

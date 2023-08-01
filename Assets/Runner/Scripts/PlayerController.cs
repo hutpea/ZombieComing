@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using HyperCasual.Core;
 using HyperCasual.Gameplay;
+using Sirenix.Utilities;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -64,11 +66,12 @@ namespace HyperCasual.Runner
         [SerializeField]
         bool m_AutoMoveForward = true;
 
-        Vector3 m_LastPosition;
+        public Vector3 m_LastPosition;
         float m_StartHeight;
 
         private bool isFinishRun = false;
         public bool isInMenu = true;
+        public bool isInClimbState = false;
 
         const float k_MinimumScale = 0.1f;
         static readonly string s_Speed = "Speed";
@@ -136,7 +139,9 @@ namespace HyperCasual.Runner
             }
 
             s_Instance = this;
-
+            var currentPos = transform.position;
+            currentPos.z += 5;
+            transform.position = currentPos;
             Initialize();
         }
 
@@ -147,7 +152,7 @@ namespace HyperCasual.Runner
             RenderSettings.ambientSkyColor = new Color(0.92f, 0.92f, 0.92f, 1);
             
             isInMenu = true;
-            
+            isInClimbState = false;
 
             int levelIndex = GameManager.Instance.m_CurrentLevel.LevelIndex;
             Debug.Log("Current level:" + levelIndex);
@@ -164,6 +169,10 @@ namespace HyperCasual.Runner
                         Destroy(allRunningManInScene[i].gameObject);
                     }
                 }
+            }
+            else if (levelIndex > 20)
+            {
+                Instantiate(GameManager.Instance.egyptPrefab, new Vector3(0, 0, 0), Quaternion.identity);
             }
             else
             {
@@ -359,10 +368,8 @@ namespace HyperCasual.Runner
 
         void Update()
         {
-            if (isInMenu)
-            {
-                return;
-            }
+            if (isInMenu) return;
+            if (isInClimbState) return;
             if (isFinishRun) return;
             float deltaTime = Time.deltaTime;
 
@@ -430,7 +437,7 @@ namespace HyperCasual.Runner
                     float distancePerSecond = distanceTravelledSinceLastFrame / deltaTime;
 
                     animator.SetFloat(s_Speed, distancePerSecond);
-                    animator.SetFloat(s_MotionSpeed, Random.Range(0.9f, 1.1f));
+                    //animator.SetFloat(s_MotionSpeed, Random.Range(0.9f, 1.1f));
                 }
             }
 
@@ -443,6 +450,7 @@ namespace HyperCasual.Runner
             {
                 zombie.transform.position = m_Transform.position + zombie.offsetPosToOriginal;
                 zombie.transform.forward = m_Transform.forward;
+                //zombie.zombieRigidbody.velocity = m_Transform.forward * 5;
             }
             m_LastPosition = m_Transform.position;
         }
@@ -612,6 +620,19 @@ namespace HyperCasual.Runner
             ToggleRunSound(false);
             ToggleSmokeTrailEffects(false);
         }
+        
+        public void ZombieFinishBeginLevel()
+        {
+            var allSpawnables = GameObject.FindObjectsByType<Spawnable>(FindObjectsSortMode.None);
+            for (int i = 0; i < allSpawnables.Length; i++)
+            {
+                Destroy(allSpawnables[i].gameObject);
+            }
+
+            TogglePlayerFollower(false);
+            ToggleRunSound(false);
+            ToggleSmokeTrailEffects(false);
+        }
 
         public void EnablePlay()
         {
@@ -631,6 +652,13 @@ namespace HyperCasual.Runner
             {
                 allPolices[i].enablePlay = true;
             }
+            /*var allNumberSpawn = FindObjectsByType<NumberSpawnable>(FindObjectsSortMode.None);
+            var numberSpawnList = allNumberSpawn.OrderBy(x => x.transform.position.z).ToList();
+            var spawnableNumberData = GameManager.Instance.m_CurrentLevel.LevelNumberSpawnableData;
+            for (int i = 0; i < numberSpawnList.Count; i++)
+            {
+                numberSpawnList[i].SetNumber(spawnableNumberData.NumberSpawnableDataList[i].number, spawnableNumberData.NumberSpawnableDataList[i].sign);
+            }*/
             ToggleRunSound(true);
             ToggleSmokeTrailEffects(true);
             if (zombieList.Count < 3)
@@ -643,6 +671,79 @@ namespace HyperCasual.Runner
             }
             Debug.Log("show hud");
             UIManager.Instance.Show<Hud>();
+        }
+
+        public void PlayClimbWallTrapState(WallTrap wallTrap)
+        {
+            StartCoroutine(ClimbWallTrapCoroutine(wallTrap));
+        }
+
+        private IEnumerator ClimbWallTrapCoroutine(WallTrap wallTrap)
+        {
+            isInClimbState = true;
+            float zomHeight = 1f;
+            List<Zombie> remainWallZombie = new List<Zombie>();
+
+            var followerPos = _playerFollower.transform.position;
+            followerPos.y += 4;
+            _playerFollower.transform.DOMoveY(followerPos.y, 1f).SetDelay(0.25f).OnComplete(delegate
+            {
+                _playerFollower.transform.DOMoveY(followerPos.y - 4, 0.25f).SetDelay(0.25f);
+            });
+            
+            for (var index = 0; index < zombieList.Count; index++)
+            {
+                int tempI = index;
+                
+                if (tempI < 3)
+                {
+                    remainWallZombie.Add(zombieList[tempI]);
+                }
+                
+                zombieList[tempI].transform.DOMoveZ(wallTrap.topPointA.position.z, 0.25f).OnComplete(delegate
+                {
+                    zombieList[tempI].animator.Play("Climb");
+                    if (tempI < 3)
+                    {
+                        zombieList[tempI].transform.DOMoveX(0f, 0.1f).OnComplete(
+                            delegate
+                            {
+                                zombieList[tempI].transform.DOMoveY(wallTrap.points[tempI].position.y, tempI * 0.25f).OnComplete(
+                                    delegate
+                                    {
+                                        zombieList[tempI].animator.Play(null);
+                                    });
+                            });
+                    }
+                    else
+                    {
+                        zombieList[tempI].transform.DOMoveY(wallTrap.topPointA.position.y, 1f).OnComplete(
+                            delegate
+                            {
+                                zombieList[tempI].animator.Play("Idle Walk Run Blend");
+                                zombieList[tempI].transform.DOMoveZ(wallTrap.topPointB.position.z, 0.25f).OnComplete(
+                                    delegate
+                                    {
+                                        zombieList[tempI].transform.DOMoveY(0f, 0.25f);
+                                    });
+                            });
+                    }
+                    //zombieList[tempI].transform.DOMoveZ
+                });
+            }
+            
+            var _tempPlayerPos = transform.position;
+            _tempPlayerPos += new Vector3(0, 0, 2f);
+            PlayerController.Instance.transform.DOMoveZ(_tempPlayerPos.z, 1.5f);
+            CameraManager.Instance.SetCameraPositionAndOrientation(false);
+            
+            yield return new WaitForSeconds(2f);
+            for (var index = 0; index < remainWallZombie.Count; index++)
+            {
+                remainWallZombie[index].RemoveThisZombie();
+            }
+
+            isInClimbState = false;
         }
 
         public void DisablePlay()
@@ -727,7 +828,7 @@ namespace HyperCasual.Runner
         {
             if (Time.time - m_LastSoundPlayTime >= m_MinSoundInterval)
             {
-                Debug.Log("zom death: " + soundID);
+                //Debug.Log("zom death: " + soundID);
                 AudioClip playClip = deathZomSoundList[0];
                 switch (soundID)
                 {

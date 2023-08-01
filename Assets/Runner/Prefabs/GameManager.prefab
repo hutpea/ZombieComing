@@ -69,6 +69,7 @@ MonoBehaviour:
   - {fileID: 3531843169514274682, guid: 768440285cee2df45a7bc291085e603a, type: 3}
   - {fileID: 139891313773644970, guid: 5a3e0dda5fc1052439e2b6ceda347858, type: 3}
   seaPrefab: {fileID: 5789809230665584777, guid: e095d59788bfc194da47bdfd8df9e395, type: 3}
+  egyptPrefab: {fileID: 5658748622258574212, guid: 5d858311178770a4eaba14eb3ce62337, type: 3}
   m_CurrentLevel: {fileID: 0}
   endLineObject: {fileID: 0}
 --- !u!114 &3032845646059521394

@@ -5,6 +5,7 @@ using System.Linq;
 using DG.Tweening;
 using HyperCasual.Runner;
 using MoreMountains.NiceVibrations;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -36,15 +37,11 @@ public class Zombie : MonoBehaviour
         animator = GetComponent<Animator>();
         zombieRigidbody = GetComponent<Rigidbody>();
 
-        /*int randomNum = UnityEngine.Random.Range(0, 100);
-        if (randomNum >= 50 && randomNum < 75)
+        int randomNum = UnityEngine.Random.Range(0, 100);
+        if (randomNum >= 60)
         {
             animator.Play("Idle Walk Run Blend 1");
         }
-        else if (randomNum >= 75)
-        {
-            animator.Play("Idle Walk Run Blend 2");
-        }*/
     }
 
     private void Update()
@@ -86,20 +83,24 @@ public class Zombie : MonoBehaviour
     
     public void RemoveThisZombie()
     {
-        Debug.Log("Remove " + gameObject.name);
+        //Debug.Log("Remove " + gameObject.name);
         isDied = true;
         Vector3 zOffsetNew = new Vector3(0, 0, 1f);
         var newZom = Instantiate(PlayerController.Instance.selectedZombiePrefab, transform.position + zOffsetNew, Quaternion.identity);
         newZom.tag = "Untagged";
-        Quaternion newRot = Quaternion.Euler(0, Random.Range(-45, 45), 0);
+        Quaternion newRot = Quaternion.Euler(0, 0, 0);
         newZom.transform.rotation = newRot;
         //newZom.GetComponent<CapsuleCollider>().enabled = false;
         ChangeMaterial(deathMaterial, newZom);
+
         Zombie newZomComponent = newZom.GetComponent<Zombie>();
+        newZomComponent.isFinishRun = true;
         newZomComponent.animator.Play("Death");
-        float pushForce = 5f;
+        float pushForce = 500f;
         Rigidbody newZomRb = newZom.GetComponent<Rigidbody>();
-        newZomRb.AddForce(new Vector3(0, 1, -1) * pushForce);
+        newZomRb.useGravity = true;
+        newZomRb.mass = 3f;
+        newZomRb.AddForce(new Vector3(Random.Range(-1f, 1f), 3f, 2f) * pushForce);
 
         newZom.AddComponent<AutoDestroy>();
         newZom.GetComponent<AutoDestroy>().lifeTime = 2f;
@@ -166,5 +167,16 @@ public class Zombie : MonoBehaviour
         }
 
         skinnedMeshRenderer.materials = mats;
+    }
+
+    [Button]
+    public void TestPush()
+    {
+        float pushForce = 100f;
+        zombieRigidbody = GetComponent<Rigidbody>();
+        zombieRigidbody.useGravity = true;
+        var forceDir = new Vector3(Random.Range(-1f, 1f), 1, 2f) * pushForce;
+        Debug.Log(forceDir);
+        zombieRigidbody.AddForce(forceDir, ForceMode.Acceleration);
     }
 }

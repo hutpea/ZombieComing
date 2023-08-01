@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class NumberSpawnable : Spawnable
 {
+    public MeshRenderer meshRenderer;
+    public List<Material> greenMats;
+    public List<Material> redMats;
     public TextMeshPro textMesh;
     public int number;
     public NumberSign numberSign;
@@ -15,31 +18,57 @@ public class NumberSpawnable : Spawnable
 
     private void Awake()
     {
-        number = UnityEngine.Random.Range(2, 4);
-        numberSign = (NumberSign) UnityEngine.Random.Range(0, 4);
-        switch (numberSign)
+        SetNumber(number, numberSign);
+    }
+
+    public void SetNumber(int _number, NumberSign _sign)
+    {
+        switch (_sign)
         {
             case NumberSign.Plus:
             {
-                textMesh.SetText("+" + number);
+                textMesh.SetText("+" + _number);
+                Material[] tempMats = meshRenderer.sharedMaterials;
+                tempMats[0] = greenMats[0];
+                tempMats[1] = greenMats[1];
+                meshRenderer.sharedMaterials = tempMats;
+                textMesh.color = Color.green;
                 break;
             }
             case NumberSign.Minus:
             {
-                textMesh.SetText("-" + number);
+                textMesh.SetText("-" + _number);
+                Material[] tempMats = meshRenderer.sharedMaterials;
+                tempMats[0] = redMats[0];
+                tempMats[1] = redMats[1];
+                meshRenderer.sharedMaterials = tempMats;
+                textMesh.color = Color.red;
                 break;
             }
             case NumberSign.Multiply:
             {
-                textMesh.SetText("x" + number);
+                textMesh.SetText("x" + _number);
+                Material[] tempMats = meshRenderer.sharedMaterials;
+                tempMats[0] = greenMats[0];
+                tempMats[1] = greenMats[1];
+                meshRenderer.sharedMaterials = tempMats;
+                textMesh.color = Color.green;
                 break;
             }
             case NumberSign.Divide:
             {
-                textMesh.SetText("÷" + number);
+                textMesh.SetText("÷" + _number);
+                Material[] tempMats = meshRenderer.sharedMaterials;
+                tempMats[0] = redMats[0];
+                tempMats[1] = redMats[1];
+                meshRenderer.sharedMaterials = tempMats;
+                textMesh.color = Color.red;
                 break;
             }
         }
+
+        this.number = _number;
+        this.numberSign = _sign;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -100,8 +129,9 @@ public class NumberSpawnable : Spawnable
 
 public enum NumberSign
 {
-    Plus,
-    Minus,
-    Multiply,
-    Divide
+    //None = 0,
+    Plus = 1,
+    Minus = 2,
+    Multiply = 3,
+    Divide = 4
 }

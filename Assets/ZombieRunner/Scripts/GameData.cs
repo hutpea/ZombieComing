@@ -5,6 +5,18 @@ using UnityEngine;
 
 public class GameData : MonoBehaviour
 {
+    public static int GameFirstLaunch
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("GameFirstLaunch", 0);
+        }
+        set
+        {
+            PlayerPrefs.SetInt("GameFirstLaunch", value);
+        }
+    }
+    
     public static int Coin
     {
         get
@@ -21,7 +33,7 @@ public class GameData : MonoBehaviour
     {
         get
         {
-            return PlayerPrefs.GetInt("StartZombieCost", 10);
+            return PlayerPrefs.GetInt("StartZombieCost", 150);
         }
         set
         {
@@ -33,7 +45,7 @@ public class GameData : MonoBehaviour
     {
         get
         {
-            return PlayerPrefs.GetInt("ZombieMaxHealthCost", 10);
+            return PlayerPrefs.GetInt("ZombieMaxHealthCost", 150);
         }
         set
         {
@@ -45,7 +57,7 @@ public class GameData : MonoBehaviour
     {
         get
         {
-            return PlayerPrefs.GetInt("LevelCoinMultiplierCost", 10);
+            return PlayerPrefs.GetInt("LevelCoinMultiplierCost", 150);
         }
         set
         {

@@ -18,6 +18,7 @@ public class EndGameEvent2 : MonoBehaviour
     private List<Zombie> zombieList;
     private EndGameWall endGameWall;
 
+    private bool isEnableFollowLastZombie = false;
     public void StartGame()
     {
         //finishLinePos = GameManager.Instance.endLineObject.transform.position;
@@ -34,12 +35,20 @@ public class EndGameEvent2 : MonoBehaviour
 
     public void Init()
     {
-        PlayerController.Instance.ZombieFinishRun();
+        //PlayerController.Instance.ZombieFinishRun();
+        PlayerController.Instance.ZombieFinishBeginLevel();
+        PlayerController.Instance.isInClimbState = true;
         StartCoroutine(EndGame());
     }
 
     private IEnumerator EndGame()
     {
+        var tp1 = PlayerController.Instance.transform.position;
+        tp1.z -= 5f;
+        PlayerController.Instance.transform.DOMove(tp1, 0.5f).OnComplete(delegate
+        {
+        });
+        
         var currentZombieList = PlayerController.Instance.zombieList;
         zombieList = new List<Zombie>();
         zombieList = currentZombieList;
@@ -52,6 +61,8 @@ public class EndGameEvent2 : MonoBehaviour
             zombie.wallIndex = zombieIndex;
             zombieIndex++;
         }
+
+        int lastIndex = Mathf.Min(currentZombieList.Count - 1, 29);
 
         foreach (var zombie in currentZombieList)
         {
@@ -72,6 +83,10 @@ public class EndGameEvent2 : MonoBehaviour
 
             zombie.transform.DOMove(endGameWall.wallPoints[0].position, 1f).SetDelay(delayTime).OnComplete(delegate
             {
+                if (zombie.wallIndex == lastIndex)
+                {
+                    isEnableFollowLastZombie = true;
+                }
                 zombie.animator.SetFloat("Speed", 0f);
                 zombie.animator.Play("Climb");
                 zombie.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
@@ -83,11 +98,7 @@ public class EndGameEvent2 : MonoBehaviour
                         zombie.animator.SetFloat("Speed", 5f);
                         zombie.animator.Play("Idle Walk Run Blend");
                         Vector3 targetPos = endGameWall.dancePoint.position + zombie.offsetPosToOriginal;
-                        zombie.transform.DOMove(targetPos, 1.5f).OnComplete(delegate
-                        {
-                            zombie.animator.SetFloat("Speed", 0f);
-                            zombie.animator.Play("Dance");
-                        });
+                        zombie.transform.DOMove(targetPos, 1.5f);
                     });
                 }
                 else
@@ -127,6 +138,14 @@ public class EndGameEvent2 : MonoBehaviour
                                     case 29:
                                     {
                                         endGameWall.SetLight(5);
+                                        Debug.Log("Last light in ON");
+                                        PlayerController.Instance.m_LastPosition = endGameWall.dancePoint.position + new Vector3(0, -1f, 0);
+                                        PlayerController.Instance.transform.DOMove(endGameWall.dancePoint.position +
+                                            new Vector3(0, -1f, 0), 0.01f).OnComplete(delegate
+                                        {
+                                            isFinishCoroutine = true;
+                                        });
+                                        CameraManager.Instance.SetCameraPositionAndOrientation(false);
                                         break;
                                     }
                                     default: break;
@@ -164,19 +183,24 @@ public class EndGameEvent2 : MonoBehaviour
         }*/
 
         yield return new WaitForSeconds(delayTime + timePerJump * Mathf.Min(zombieList.Count, 30) - 0.25f);
-
+        endGameWall.wallPlusObj.SetActive(true);
         if (currentZombieList.Count > 30)
         {
-            yield return new WaitForSeconds(1.5f);
+            //yield return new WaitForSeconds(1.5f);
         }
-
-        yield return new WaitForSeconds(1.5f);
+        else
+        {
+            GameManager.Instance.m_WinEvent.Raise();
+            yield break;
+        }
+        
+        /*yield return new WaitForSeconds(1.5f);
         var _tempPlayerPos = PlayerController.Instance.transform.position;
         _tempPlayerPos += new Vector3(0, -2, 2f);
         PlayerController.Instance.transform.DOMove(_tempPlayerPos, 1f);
-        CameraManager.Instance.SetCameraPositionAndOrientation(false);
+        CameraManager.Instance.SetCameraPositionAndOrientation(false);*/
 
-        foreach (var zom in zombieList)
+        /*foreach (var zom in zombieList)
         {
             int randN = UnityEngine.Random.Range(0, 100);
             if (randN > 50)
@@ -184,18 +208,45 @@ public class EndGameEvent2 : MonoBehaviour
                 Instantiate(confettiPrefab, zom.transform.position + new Vector3(0, 0, -0.5f), Quaternion.identity);
                 confettiPrefab.transform.localScale = new Vector3(4f, 4f, 4f);
             }
-        }
-
-        yield return new WaitForSeconds(1.5f);
+        }*/
 
         zombieList = null;
 
-        GameManager.Instance.m_WinEvent.Raise();
+        //yield return new WaitForSeconds(0.75f);
+
+        Debug.Log("isFinishCoroutine = true");
+
+        int remainZom = Mathf.Max(PlayerController.Instance.zombieList.Count - 30, 1);
+        while (PlayerController.Instance.zombieList.Count > remainZom)
+        {
+            PlayerController.Instance.RemoveFromFormation();
+        }
+
+        foreach (var zom in PlayerController.Instance.zombieList)
+        {
+            zom.animator.SetFloat("Speed", 11);
+            zom.animator.Play("Idle Walk Run Blend");
+        }
+        PlayerController.Instance.m_LastPosition = endGameWall.dancePoint.position + new Vector3(0, -1f, 0);
+        PlayerController.Instance.transform.position = endGameWall.dancePoint.position + new Vector3(0, -1f, 0);
+        CameraManager.Instance.SetCameraPositionAndOrientation(false);
+        PlayerController.Instance.isInClimbState = false;
+        var tempPos = PlayerController.Instance.transform.position;
+        tempPos.z += 8f;
+        tempPos.y += 0.75f;
+        PlayerController.Instance.transform.DOMove(tempPos, 0.01f).OnComplete(delegate
+        {
+            Debug.Log("AAA");
+        });
+        //GameManager.Instance.m_WinEvent.Raise();
     }
+    
+    private bool isFinishCoroutine = false;
 
     private void Update()
     {
-        if (zombieList != null)
+        if (isFinishCoroutine) return;
+        if (zombieList != null && isEnableFollowLastZombie)
         {
             if (zombieList.Count == 0) return;
             Vector3 _tempPlayerPos = PlayerController.Instance.transform.position;
@@ -205,7 +256,10 @@ public class EndGameEvent2 : MonoBehaviour
             }
             else
             {
-                _tempPlayerPos.y = zombieList[zombieList.Count - 1].transform.position.y + 5f;
+                if (zombieList[zombieList.Count - 1] != null)
+                {
+                    _tempPlayerPos.y = zombieList[zombieList.Count - 1].transform.position.y + 5f;
+                }
             }
             PlayerController.Instance.transform.position = _tempPlayerPos;
             CameraManager.Instance.SetCameraPositionAndOrientation(false);

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 908075786339557761}
   - component: {fileID: 1021016545228352373}
   - component: {fileID: 1033549950333286667}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SmokeTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4754,7 +4754,7 @@ GameObject:
   - component: {fileID: 908432744828253727}
   - component: {fileID: 1032792006661980425}
   - component: {fileID: 1033381557963044541}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4930,7 +4930,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.56997967, b: 0.41176468, a: 1}
+      maxColor: {r: 1, g: 0.20461828, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9564,7 +9564,7 @@ GameObject:
   - component: {fileID: 908444052120407051}
   - component: {fileID: 1032870010359305633}
   - component: {fileID: 1033376007342442737}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SparkTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9740,7 +9740,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 0.7971698, b: 0.7971698, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -14356,7 +14356,7 @@ GameObject:
   - component: {fileID: 1033440012422248671}
   - component: {fileID: -1515837635437518989}
   - component: {fileID: -5536531408152190846}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RocketMeshMissileFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}

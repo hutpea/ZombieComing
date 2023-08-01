@@ -39,7 +39,7 @@ namespace HyperCasual.Runner
         /// </summary>
         const float k_MilestoneFactor = 1.2f;
 
-        Hud m_Hud;
+        public Hud m_Hud;
         LevelCompleteScreen m_LevelCompleteScreen;
 
         void Start()
@@ -115,29 +115,32 @@ namespace HyperCasual.Runner
             }
         }
 
+
+        private int savedMoney = 0;
+        
         void OnWin()
         {
-            Debug.Log("Inventory On Win");
-            
+            savedMoney = m_TempGold;
+            /*Debug.Log("Inventory On Win");
             Debug.Log("Level ladder: " + GameData.LevelLadderLevel);
-            Debug.Log("GameData.LevelCoinMultiplier: " + GameData.LevelCoinMultiplier);
+            Debug.Log("GameData.LevelCoinMultiplier: " + GameData.LevelCoinMultiplier);*/
 
             int tempFloatGold = (int)(m_TempGold * GameData.LevelLadderLevel * GameData.LevelCoinMultiplier);
             
-            Debug.Log("tempFloatGold: " + tempFloatGold);
+            //Debug.Log("tempFloatGold: " + tempFloatGold);
 
             m_TotalGold = 0;
             m_TotalGold += tempFloatGold;
             
-            Debug.Log("m_TotalGold: " + m_TotalGold);
+            //Debug.Log("m_TotalGold: " + m_TotalGold);
             
             m_LevelCompleteScreen.GoldValue = m_TotalGold;
             
             m_TempGold = 0;
             
-            Debug.Log("previous currency: " + SaveManager.Currency);
+            //Debug.Log("previous currency: " + SaveManager.Currency);
             SaveManager.Currency += m_TotalGold;
-            Debug.Log("now currency: " + SaveManager.Currency);
+            //Debug.Log("now currency: " + SaveManager.Currency);
             
             m_LevelCompleteScreen.XpSlider.minValue = m_TotalXp;
             m_LevelCompleteScreen.XpSlider.maxValue = k_MilestoneFactor * (m_TotalXp + m_TempXp);
@@ -152,6 +155,7 @@ namespace HyperCasual.Runner
 
         void OnLose()
         {
+            savedMoney = m_TempGold;
             m_TempGold = 0;
             m_TotalXp += m_TempXp;
             m_TempXp = 0f;
@@ -171,6 +175,11 @@ namespace HyperCasual.Runner
                     m_Hud.XpSlider.maxValue = loadLevelFromDef.m_LevelDefinition.LevelLength;
                 }
             }
+        }
+
+        public int GetTempGold()
+        {
+            return savedMoney;
         }
     }
 }

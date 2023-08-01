@@ -43,7 +43,7 @@ namespace HyperCasual.Runner
         /// </summary>
         public static int Currency 
         { 
-            get => PlayerPrefs.GetInt(k_Currency, 999); 
+            get => PlayerPrefs.GetInt(k_Currency, 500); 
             set => PlayerPrefs.SetInt(k_Currency, value);
         }
 
