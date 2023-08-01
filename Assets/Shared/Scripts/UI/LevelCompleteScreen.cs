@@ -147,6 +147,7 @@ namespace HyperCasual.Runner
             enableUpdateTextBasedOnPointer = true;
             foreach (var bCoin in brainCoins)
             {
+                bCoin.transform.localPosition = Vector3.zero;
                 bCoin.gameObject.SetActive(false);
             }
         }
@@ -172,6 +173,7 @@ namespace HyperCasual.Runner
             //bonusWindowPanel.GetComponent<RectTransform>().DOScale(1f, 0.5f).SetEase(Ease.InOutQuad);
             int bonusValue = (int)(bonusPointer.GetLevelMultiplier() * (float)GoldValue - (float)GoldValue);
             Debug.Log("Bonus: " + bonusValue);
+            int calculatedValue = SaveManager.Currency + bonusValue;
             SaveManager.Currency += bonusValue;
             GameManager.Instance.gameMainMenuUI.currentGoldTxt.text = SaveManager.Currency.ToString();
             ToggleBonusButton(false);
@@ -179,9 +181,9 @@ namespace HyperCasual.Runner
             //bonusWindowPanel.SetActive(true);
             //bonusWindowPanel_YouGotTxt.SetText("You got " + bonusPointer.GetLevelMultiplier().ToString("F1") + " bonuses!");
             //bonusWindowPanel_ValueTxt.SetText(bonusValue.ToString());
-            
+
             AudioManager.Instance.PlayEffect(SoundID.ScoreCollect);
-            StartCoroutine(BrainCoinsEffect());
+            StartCoroutine(BrainCoinsEffect(calculatedValue));
         }
 
         private void ContinueButtonAppear()
@@ -215,11 +217,12 @@ namespace HyperCasual.Runner
             }
         }
 
-        private IEnumerator BrainCoinsEffect()
+        private IEnumerator BrainCoinsEffect(int value)
         {
             brainCoins[0].gameObject.SetActive(true);
             brainCoins[0].DOJump(Inventory.Instance.m_Hud.m_GoldIconTransform.position, 1f, 1, 0.75f).OnComplete(delegate
             {
+                Inventory.Instance.m_Hud.m_GoldText.SetText(value.ToString());
                 brainCoins[0].gameObject.SetActive(false);
             });
             yield return new WaitForSeconds(0.33f);

@@ -59,7 +59,7 @@ public class TrapMine : Spawnable
             foreach (var zom in PlayerController.Instance.zombieList)
             {
                 float distance = Vector3.Distance(zom.transform.position, this.transform.position);
-                Debug.Log(distance);
+                //Debug.Log(distance);
                 if (distance <= range)
                 {
                     exlodedZombieList.Add(zom);

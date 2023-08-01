@@ -14,7 +14,7 @@ namespace HyperCasual.Gameplay
     /// </summary>
     public class Hud : View
     {
-        [SerializeField]
+        public
         TextMeshProUGUI m_GoldText;
         public Transform m_GoldIconTransform;
         [SerializeField]
