@@ -16,16 +16,16 @@ public class GameData : MonoBehaviour
             PlayerPrefs.SetInt("GameFirstLaunch", value);
         }
     }
-    
-    public static int Coin
+
+    public static int LevelProgress
     {
         get
         {
-            return 1;
+            return PlayerPrefs.GetInt("LevelProgress", 1);
         }
         set
         {
-            
+            PlayerPrefs.SetInt("LevelProgress", value);
         }
     }
 

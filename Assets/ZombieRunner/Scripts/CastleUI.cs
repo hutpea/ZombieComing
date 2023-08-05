@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using HyperCasual.Runner;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class CastleUI : MonoBehaviour
@@ -174,7 +175,7 @@ public class CastleUI : MonoBehaviour
 
    private void OnCombatBtnClicked()
    {
-      GameManager.Instance.StartCastleMode();
+      GameManager.Instance.StartCastleMode(30 + GameData.CurrentCastleIndex + 1);
    }
 
    private void SetCastleClaimed(int index)

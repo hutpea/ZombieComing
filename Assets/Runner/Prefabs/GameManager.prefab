@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_WinEvent: {fileID: 11400000, guid: 4facc4ba26e884ef88b6c2506fa5ae2c, type: 2}
   m_LoseEvent: {fileID: 11400000, guid: 2b6d3353ba4d84d3ca725ef1835ca96f, type: 2}
+  m_ContinueEvent: {fileID: 11400000, guid: b892538bd49f3487bbedf5106c094739, type: 2}
   endGameEvent: {fileID: 3032845646059521394}
   endGameEvent2: {fileID: 4475261522849266085}
   endGameEventCastle: {fileID: 8283208816826366898}

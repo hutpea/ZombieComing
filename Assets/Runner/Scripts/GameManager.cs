@@ -29,7 +29,9 @@ namespace HyperCasual.Runner
 
         public AbstractGameEvent m_WinEvent;
 
-        [SerializeField] AbstractGameEvent m_LoseEvent;
+        public AbstractGameEvent m_LoseEvent;
+
+        public AbstractGameEvent m_ContinueEvent;
 
         [SerializeField] private EndGameEvent endGameEvent;
         [SerializeField] private EndGameEvent2 endGameEvent2;
@@ -134,7 +136,7 @@ namespace HyperCasual.Runner
         /// <param name="levelGameObject">
         /// A new GameObject to be created, acting as the parent for the level to be loaded
         /// </param>
-        public static void LoadLevel(LevelDefinition levelDefinition, ref GameObject levelGameObject)
+        public static void LoadLevel(LevelDefinition levelDefinition, ref GameObject levelGameObject, bool isCastleMode = false)
         {
             if (levelDefinition == null)
             {
@@ -155,14 +157,20 @@ namespace HyperCasual.Runner
             }
             //Debug.Log("(3) " + levelDefinition);
             //LevelManager levelManager = levelGameObject.AddComponent<LevelManager>() ?? LevelManager.Instance;
+            if (isCastleMode)
+            {
+                DestroyImmediate(LevelManager.Instance.gameObject);
+            }
             LevelManager levelManager;
             if (LevelManager.Instance != null)
             {
+                Debug.Log("A");
                 levelGameObject = LevelManager.Instance.gameObject;
                 levelManager = LevelManager.Instance;
             }
             else
             {
+                Debug.Log("B");
                 levelGameObject = new GameObject("LevelManager");
                 levelManager = levelGameObject.AddComponent<LevelManager>();
             }
@@ -172,11 +180,12 @@ namespace HyperCasual.Runner
 
             Transform levelParent = levelGameObject.transform;
             
+            Debug.Log("Start spawn objects");
 
             for (int i = 0; i < levelDefinition.Spawnables.Length; i++)
             {
                 LevelDefinition.SpawnableObject spawnableObject = levelDefinition.Spawnables[i];
-
+                Debug.Log("Object spawned");
                 if (spawnableObject.SpawnablePrefab == null)
                 {
                     continue;
@@ -431,20 +440,36 @@ namespace HyperCasual.Runner
 #endif
         }
 
-        private bool isInCastleMode = false;
+        public bool isInCastleMode = false;
         
-        public void StartCastleMode()
+        public void StartCastleMode(int levelIndex)
         {
             isInCastleMode = true;
-            var allLadder = GameObject.FindGameObjectsWithTag("Ladder");
-            for (int i = 0; i < allLadder.Length; i++)
-            {
-                Destroy(allLadder[i].gameObject);
-            }
 
-            endGameEventCastle.StartGame();
-            
-            gameMainMenuUI.StartPlayBtn();
+            var levelData = SequenceManager.Instance.Levels[levelIndex];
+            LevelDefinition lDef = null;
+            if (levelData is LevelDefinition levelDefinition)
+                lDef = levelDefinition;
+            if (lDef != null)
+            {
+                Debug.Log("Found levelDefinition");
+                Debug.Log(lDef.LevelIndex);
+                Debug.Log(lDef.Spawnables.Length);
+                LoadLevel(lDef, ref m_CurrentLevelGO, isCastleMode: true);
+                
+                var allLadder = GameObject.FindGameObjectsWithTag("Ladder");
+                for (int i = 0; i < allLadder.Length; i++)
+                {
+                    Destroy(allLadder[i].gameObject);
+                }
+
+                endGameEventCastle.StartGame();
+                gameMainMenuUI.StartPlayBtn();
+            }
+            else
+            {
+                Debug.LogError("Not found levelDefinition");
+            }
         }
         
         private void CreateSkinItemData()

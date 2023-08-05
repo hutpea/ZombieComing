@@ -38,6 +38,7 @@ namespace HyperCasual.Runner
         //[SerializeField] private TextMeshProUGUI bonusWindowPanel_ValueTxt;
         //[SerializeField] private Button bonusWindowPanel_OKBtn;
         [SerializeField] private Button continueAfterGetBonusBtn;
+        [SerializeField] private Button normalNextBtn;
         public List<Transform> brainCoins;
         public RectTransform targetPos;
         
@@ -130,25 +131,44 @@ namespace HyperCasual.Runner
         void OnEnable()
         {
             Debug.Log("Level Complete Show");
-            m_NextButton.gameObject.SetActive(false);
-            continueAfterGetBonusBtn.gameObject.SetActive(false);
-            m_NextButton.AddListener(OnNextButtonClicked);
-            bonusBrainBtn.onClick.AddListener(OnBonusButtonClicked);
-            //bonusWindowPanel_OKBtn.onClick.AddListener(OnOKBtnClicked);
-            continueAfterGetBonusBtn.onClick.AddListener(OnNextButtonClicked);
-            ToggleBonusButton(true);
-            Invoke("WaitDisplay", 2F);
-            //Instantiate(confettiFX);
-            m_GoldPanel.localScale = Vector3.zero;
-            StartCoroutine(DelayGoldTitle());
-            StartCoroutine(Confetti());
-            //bonusWindowPanel.GetComponent<RectTransform>().localScale = Vector3.zero;
-            m_LevelText.SetText("LEVEL " + GameManager.Instance.m_CurrentLevel.LevelIndex);
-            enableUpdateTextBasedOnPointer = true;
-            foreach (var bCoin in brainCoins)
+            if (!GameManager.Instance.isInCastleMode)
             {
-                bCoin.transform.localPosition = Vector3.zero;
-                bCoin.gameObject.SetActive(false);
+                normalNextBtn.gameObject.SetActive(false);
+                m_NextButton.gameObject.SetActive(false);
+                continueAfterGetBonusBtn.gameObject.SetActive(false);
+                m_NextButton.AddListener(OnNextButtonClicked);
+                bonusBrainBtn.onClick.AddListener(OnBonusButtonClicked);
+                //bonusWindowPanel_OKBtn.onClick.AddListener(OnOKBtnClicked);
+                continueAfterGetBonusBtn.onClick.AddListener(OnNextButtonClicked);
+                ToggleBonusButton(true);
+                Invoke("WaitDisplay", 2F);
+                //Instantiate(confettiFX);
+                m_GoldPanel.localScale = Vector3.zero;
+                StartCoroutine(DelayGoldTitle());
+                StartCoroutine(Confetti());
+                //bonusWindowPanel.GetComponent<RectTransform>().localScale = Vector3.zero;
+                m_LevelText.SetText("LEVEL " + GameManager.Instance.m_CurrentLevel.LevelIndex);
+                enableUpdateTextBasedOnPointer = true;
+                foreach (var bCoin in brainCoins)
+                {
+                    bCoin.transform.localPosition = Vector3.zero;
+                    bCoin.gameObject.SetActive(false);
+                }
+            }
+            else
+            {
+                normalNextBtn.gameObject.SetActive(true);
+                
+                bonusBrainBtn.gameObject.SetActive(false);
+                m_GoldPanel.gameObject.SetActive(false);
+                
+                m_LevelText.SetText("Castle");
+                normalNextBtn.onClick.AddListener(OnNextButtonClicked);
+                foreach (var bCoin in brainCoins)
+                {
+                    bCoin.transform.localPosition = Vector3.zero;
+                    bCoin.gameObject.SetActive(false);
+                }
             }
         }
 

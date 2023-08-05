@@ -194,7 +194,10 @@ namespace HyperCasual.Gameplay
             
             var levelProgress = SaveManager.Instance.LevelProgress;
             if (currentLevelIndex == levelProgress && currentLevelIndex < m_LevelStates.Count - 1)
+            {
                 SaveManager.Instance.LevelProgress = levelProgress + 1;
+                GameData.LevelProgress = SaveManager.Instance.LevelProgress;
+            }
         }
 
         void OnLevelSelectionDisplayed()

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998452e8577ff4bb78b32585432cf5a3, type: 3}
   m_Name: Level_Castle_4
   m_EditorClassIdentifier: 
-  LevelIndex: 1001
+  LevelIndex: 1004
   LevelLength: 400
   LevelLengthBufferStart: 5
   LevelLengthBufferEnd: 5
